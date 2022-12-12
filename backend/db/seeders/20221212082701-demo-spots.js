@@ -13,7 +13,7 @@ module.exports = {
       {
         ownerId: 1,
         address: '1111 Example St',
-        city: 'Example1',
+        city: 'California',
         state: 'EX',
         country: 'US',
         lat: 11.0000,
@@ -25,7 +25,7 @@ module.exports = {
       {
         ownerId: 2,
         address: '2222 Example Rd',
-        city: "Example2",
+        city: "Florida",
         state: "EX",
         country: "US",
         lat: 33.0000,
@@ -37,7 +37,7 @@ module.exports = {
       {
         ownerId: 3,
         address: "3333 Example Ave",
-        city: "Example2",
+        city: "Utah",
         state: "EX",
         country: "US",
         lat: 55.0000,
@@ -49,7 +49,7 @@ module.exports = {
       {
         ownerId: 1,
         address: "4444 Example Ln",
-        city: "Example4",
+        city: "Florida",
         state: "EX",
         country: "US",
         lat: 77.0000,
@@ -61,7 +61,7 @@ module.exports = {
       {
         ownerId: 1,
         address: "5555 Example St",
-        city: "Example5",
+        city: "Texas",
         state: "EX",
         country: "US",
         lat: 99.0000,
