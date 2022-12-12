@@ -13,22 +13,26 @@ module.exports = {
       {
         spotId: 1,
         userId: 1,
-        review: "Review 01"
+        review: "Review 01",
+        stars: 4
       },
       {
         spotId: 5,
         userId: 1,
-        review: 'Review 02'
+        review: 'Review 02',
+        stars: 4
       },
       {
         spotId: 2,
         userId: 2,
-        review: 'Review 03'
+        review: 'Review 03',
+        stars: 5
       },
       {
         spotId: 3,
         userId: 3,
-        review: 'Review 04'
+        review: 'Review 04',
+        stars: 5
       },
     ], {});
   },
