@@ -23,22 +23,56 @@ const validateSignup = [
       .exists({ checkFalsy: true })
       .isLength({ min: 6 })
       .withMessage('Password must be 6 characters or more.'),
+
     handleValidationErrors
   ];
 
-// Sign up
+//* Sign up
 router.post(
     '/',
     validateSignup,
-    async (req, res) => {
+    async (req, res, next) => {
       const { email, password, username, firstName, lastName } = req.body;
+
+      let checkEmail = await User.findOne({
+        where: {
+          email: email
+        }
+      })
+
+      let checkUsername = await User.findOne({
+        where: {
+          username: username
+        }
+      })
+
+      if (checkEmail) {
+        const error = Error('User already exists')
+        error.errors = { email: 'User with that email already exists' }
+        error.status = 403
+        next(error)
+      }
+
+      if (checkUsername) {
+        const error = Error('User already exists')
+        error.errors = { username: 'User with that username already exists' }
+        error.status = 403
+        next(error)
+      }
+
+
+
       const user = await User.signup({ email, username, password, firstName, lastName });
 
-      await setTokenCookie(res, user);
+      const token = await setTokenCookie(res, user);
+
+
 
       return res.json({
-        user: user
+        user,
+        token
       });
+
     }
   );
 

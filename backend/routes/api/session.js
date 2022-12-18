@@ -18,7 +18,8 @@ const validateLogin = [
 
 const router = express.Router();
 
-// Log in
+
+//* Log in
 router.post(
     '/',
     validateLogin,
@@ -28,21 +29,26 @@ router.post(
       const user = await User.login({ credential, password });
 
       if (!user) {
-        const err = new Error('Login failed');
+        const err = new Error('Invalid credentials');
         err.status = 401;
-        err.title = 'Login failed';
-        err.errors = ['The provided credentials were invalid.'];
         return next(err);
       }
 
-      await setTokenCookie(res, user);
+      const token = await setTokenCookie(res, user);
 
       return res.json({
-        user: user
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        username: user.username,
+        token
       });
     }
   );
-  // Log out
+
+
+  //* Log out
 router.delete(
     '/',
     (_req, res) => {
@@ -51,7 +57,7 @@ router.delete(
     }
   );
 
-  // Restore session user
+  //* Restore session user
 router.get(
     '/',
     restoreUser,
