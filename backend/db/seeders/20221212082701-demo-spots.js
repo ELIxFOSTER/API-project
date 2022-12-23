@@ -16,11 +16,11 @@ module.exports = {
         city: 'California',
         state: 'EX',
         country: 'US',
-        lat: 11.0000,
-        lng: 22.0000,
+        lat: 11.0001,
+        lng: 22.0001,
         name: 'First Spot',
         description: "Amazing spot desc. #1",
-        price: 111.99
+        price: 111
       },
       {
         ownerId: 2,
@@ -28,11 +28,11 @@ module.exports = {
         city: "Florida",
         state: "EX",
         country: "US",
-        lat: 33.0000,
-        lng: 44.0000,
+        lat: 33.0001,
+        lng: 44.0001,
         name: 'Second Spot',
         description: 'Wonderful spot desc. #2',
-        price: 222.99
+        price: 222
       },
       {
         ownerId: 3,
@@ -40,11 +40,11 @@ module.exports = {
         city: "Utah",
         state: "EX",
         country: "US",
-        lat: 55.0000,
-        lng: 66.0000,
+        lat: 55.0001,
+        lng: 66.0001,
         name: 'Third Spot',
         description: 'Fantastic spot desc. #3',
-        price: 333.99
+        price: 333
       },
       {
         ownerId: 1,
@@ -52,11 +52,11 @@ module.exports = {
         city: "Florida",
         state: "EX",
         country: "US",
-        lat: 77.0000,
-        lng: 88.0000,
+        lat: 77.0001,
+        lng: 88.0001,
         name: 'Fourth Spot',
         description: "Great spot desc. #4",
-        price: 444.99
+        price: 444
       },
       {
         ownerId: 1,
@@ -64,11 +64,11 @@ module.exports = {
         city: "Texas",
         state: "EX",
         country: "US",
-        lat: 99.0000,
-        lng: 11.0000,
+        lat: 99.0001,
+        lng: 11.0001,
         name: "Fifth Spot",
         description: "Last but not least desc. #5",
-        price: 555.99
+        price: 555
       }
     ], {});
   },

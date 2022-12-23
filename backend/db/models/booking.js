@@ -19,8 +19,24 @@ module.exports = (sequelize, DataTypes) => {
     userId: {
       type: DataTypes.INTEGER,
     },
-    startDate: DataTypes.DATE,
-    endDate: DataTypes.DATE
+    startDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      validate: {
+        isDate: {
+          msg: 'Invalid Date'
+        },
+      }
+    },
+    endDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      validate: {
+        isDate: {
+          msg: 'Invalid Date'
+        },
+      }
+    }
   }, {
     sequelize,
     modelName: 'Booking',

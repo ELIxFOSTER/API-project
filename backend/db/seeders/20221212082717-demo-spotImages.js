@@ -16,29 +16,29 @@ module.exports = {
         preview: true
       },
       {
-        spotId: 1,
+        spotId: 2,
         url: 'www.example1ext.com',
         preview: false
       },
       {
-        spotId: 2,
-        url: 'www.example2.com',
-        preview: false
-      },
-      {
         spotId: 3,
-        url: 'www.example3.com',
+        url: 'www.example2.com',
         preview: false
       },
       {
         spotId: 4,
         url: 'www.example4.com',
-        preview: false
+        preview: true
       },
       {
         spotId: 5,
         url: 'www.example5.com',
-        preview: false
+        preview: true
+      },
+      {
+        spotId: 1,
+        url: 'www.example1ext.com',
+        preview: true
       }
     ], {});
   },
