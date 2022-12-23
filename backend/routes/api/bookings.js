@@ -190,12 +190,14 @@ router.delete("/:bookingId", requireAuth, async (req, res, next) => {
     const error = Error("Booking couldn't be found");
     error.status = 404;
     next(error);
+    return
   }
 
   if (booking.startDate < new Date()) {
     const error = Error("Bookings that have been started can't be deleted");
     error.status = 403;
     next(error);
+    return
   }
 
   await booking.destroy();
