@@ -81,10 +81,13 @@ router.post("/:spotId/bookings", requireAuth, async (req, res, next) => {
     },
   });
 
+  let flag = false
+
   for (let i = 0; i < allBookings.length; i++) {
     let jsonBooking = allBookings[i].toJSON();
 
     if (jsonBooking.startDate === startDate) {
+      flag = true
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
       );
@@ -93,12 +96,11 @@ router.post("/:spotId/bookings", requireAuth, async (req, res, next) => {
         startDate: "Start date conflicts with an exists booking",
       };
       next(error)
-    }
-
-    if (
+    } else if (
       new Date(startDate).getTime() < new Date(jsonBooking.endDate).getTime() &&
       new Date(startDate).getTime() > new Date(jsonBooking.startDate).getTime()
     ) {
+      flag = true
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
       );
@@ -107,12 +109,11 @@ router.post("/:spotId/bookings", requireAuth, async (req, res, next) => {
         startDate: "Start date conflicts with an exists booking",
       };
       next(error)
-    }
-
-    if (
+    } else if (
       new Date(startDate).getTime() ===
       new Date(jsonBooking.startDate).getTime()
     ) {
+      flag = true
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
       );
@@ -121,11 +122,10 @@ router.post("/:spotId/bookings", requireAuth, async (req, res, next) => {
         startDate: "Start date conflicts with an existing booking",
       };
       next(error);
-    }
-
-    if (
+    } else if (
       new Date(startDate).getTime() === new Date(jsonBooking.endDate).getTime()
     ) {
+      flag = true
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
       );
@@ -137,18 +137,23 @@ router.post("/:spotId/bookings", requireAuth, async (req, res, next) => {
     }
   }
 
-  const newBooking = await Booking.build({
-    spotId: spotId,
-    userId: req.user.id,
-    startDate: startDate,
-    endDate: endDate,
-  });
+  if (flag === false) {
+    const newBooking = await Booking.build({
+      spotId: spotId,
+      userId: req.user.id,
+      startDate: startDate,
+      endDate: endDate,
+    });
 
-  await newBooking.validate();
-  await newBooking.save();
+    await newBooking.validate();
+    await newBooking.save();
 
-  res.status(200);
-  return res.json(newBooking);
+    res.status(200);
+    return res.json(newBooking);
+  } else {
+    return
+  }
+
 });
 
 //* Add an Image to a Spot
