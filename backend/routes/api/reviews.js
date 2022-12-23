@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const { Op } = require('sequelize')
+
 const {
   setTokenCookie,
   requireAuth,
@@ -19,10 +21,13 @@ const {
   handleValidationErrors,
   validateSpotCreation,
 } = require("../../utils/validation");
+const review = require("../../db/models/review");
 
 //* Get all Reviews of the Current User
 router.get("/current", requireAuth, async (req, res, next) => {
   const userId = req.user.id;
+
+  let Reviews = []
 
   const reviews = await Review.findAll({
     where: {
@@ -41,7 +46,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
           ],
         },
       },
-      { model: Spot, attributes: { exclude: ["createdAt", "updatedAt"] } },
+      { model: Spot, attributes: { exclude: ["createdAt", "updatedAt"], } },
       {
         model: ReviewImage,
         attributes: { exclude: ["createdAt", "updatedAt", "reviewId"] },
@@ -49,10 +54,34 @@ router.get("/current", requireAuth, async (req, res, next) => {
     ],
   });
 
-  res.status(200);
 
-  res.json({
-    Reviews: reviews,
+
+
+  for (let i = 0; i < reviews.length; i++) {
+    let reviewJson = reviews[i].toJSON()
+
+    let spotImage = await SpotImage.findOne({
+      where: {
+        [Op.and]: [
+          { spotId: reviewJson.Spot.id },
+          { preview: true }
+        ]
+      }
+    })
+
+    if (spotImage) {
+      reviewJson.Spot.previewImage = spotImage.url
+    }
+
+    Reviews.push(reviewJson)
+  }
+
+
+
+
+  res.status(200);
+  return res.json({
+    Reviews
   });
 });
 

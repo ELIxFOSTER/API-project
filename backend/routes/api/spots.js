@@ -238,7 +238,7 @@ router.put(
   }
 );
 
-//? Get all Spots owned by the Current User
+//* Get all Spots owned by the Current User
 router.get("/current", requireAuth, async (req, res, next) => {
   const userId = req.user.id;
 
@@ -285,7 +285,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
   });
 });
 
-// //? Get details of a Spot from an id
+//* Get details of a Spot from an id
 router.get("/:spotId", async (req, res, next) => {
   const { spotId } = req.params;
 
