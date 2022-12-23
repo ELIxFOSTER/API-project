@@ -20,13 +20,19 @@ const validateBooking = [
   handleValidationErrors,
 ];
 
-//* Edit a Booking
+// //* Edit a Booking
 router.put("/:bookingId", requireAuth, async (req, res, next) => {
   const { bookingId } = req.params;
   const { startDate, endDate } = req.body;
-  const userId = req.user.id;
+
 
   const booking = await Booking.findByPk(bookingId);
+
+  if (!booking) {
+    const error = Error("Booking couldn't be found")
+    error.status = 404
+    next(error)
+  }
 
   if (endDate <= startDate) {
     const error = Error("Validation Error");
@@ -63,10 +69,13 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
     },
   });
 
+  let flag = false
+
   for (let i = 0; i < allBookings.length; i++) {
     let jsonBooking = allBookings[i].toJSON();
 
     if (jsonBooking.startDate === startDate) {
+      flag = true
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
       );
@@ -80,6 +89,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       new Date(startDate).getTime() < new Date(jsonBooking.endDate).getTime() &&
       new Date(startDate).getTime() > new Date(jsonBooking.startDate).getTime()
     ) {
+      flag = true
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
       );
@@ -93,6 +103,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       new Date(startDate).getTime() ===
       new Date(jsonBooking.startDate).getTime()
     ) {
+      flag = true
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
       );
@@ -106,6 +117,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
     if (
       new Date(startDate).getTime() === new Date(jsonBooking.endDate).getTime()
     ) {
+      flag = true
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
       );
@@ -117,16 +129,20 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
     }
   }
 
-  const editedBooking = await booking.set({
-    startDate,
-    endDate,
-  });
+  if (flag === false) {
+    const editedBooking = await booking.set({
+      startDate,
+      endDate,
+    });
+    await editedBooking.save();
 
-  await editedBooking.save();
+    res.status(200);
+    console.log(editedBooking);
+    return res.json(editedBooking);
+  } else {
+    return
+  }
 
-  res.status(200);
-  console.log(editedBooking);
-  return res.json(editedBooking);
 });
 
 //* Get all of the Current User's Bookings

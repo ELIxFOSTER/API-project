@@ -245,6 +245,64 @@ router.put(
   }
 );
 
+
+//* Get details of a Spot from an id
+router.get("/:spotId", async (req, res, next) => {
+  const { spotId } = req.params;
+
+  const spot = await Spot.findByPk(spotId, {
+    raw: true,
+  });
+
+  if (!spot) {
+    const error = Error("Spot couldn't be found")
+    error.status = 404
+    next(error)
+  } else {
+    const spotDetails = await Spot.findByPk(spotId, {
+      include: [
+        {
+          model: SpotImage,
+          attributes: { exclude: ["createdAt", "updatedAt", "spotId"] },
+        },
+        { model: User, as: "Owner", attributes: ["id", "firstName", "lastName"] },
+      ],
+    });
+
+    const reviewCount = await Review.count({
+      where: {
+        spotId: spotId,
+      },
+    });
+
+
+    const reviews = await Review.findAll({
+      where: {
+        spotId: spotId,
+      },
+      attributes: [[sequelize.fn("AVG", sequelize.col("stars")), "avgRating"]],
+      raw: true,
+    });
+
+    for (let i = 0; i < reviews.length; i++) {
+      if (isNaN(parseFloat(reviews[0].avgRating).toFixed(1))) {
+        spot.avgRating = "No ratings yet";
+      } else {
+        spot.avgRating = parseFloat(parseFloat(reviews[0].avgRating).toFixed(1));
+      }
+    }
+
+
+      spot.Owner = spotDetails.Owner;
+      spot.SpotImages = spotDetails.SpotImages;
+
+      res.status(200);
+      res.json(spot);
+  }
+
+});
+
+
 //* Get all Spots owned by the Current User
 router.get("/current", requireAuth, async (req, res, next) => {
   const userId = req.user.id;
@@ -262,8 +320,6 @@ router.get("/current", requireAuth, async (req, res, next) => {
         spotId: spots[i].id,
       },
     });
-
-    console.log("XXXXX", spotImage);
 
     if (spotImage) {
       spots[i].previewImage = spotImage.url;
@@ -292,60 +348,6 @@ router.get("/current", requireAuth, async (req, res, next) => {
   });
 });
 
-//* Get details of a Spot from an id
-router.get("/:spotId", async (req, res, next) => {
-  const { spotId } = req.params;
-
-  const spot = await Spot.findByPk(spotId, {
-    raw: true,
-  });
-
-  const spotDetails = await Spot.findByPk(spotId, {
-    include: [
-      {
-        model: SpotImage,
-        attributes: { exclude: ["createdAt", "updatedAt", "spotId"] },
-      },
-      { model: User, as: "Owner", attributes: ["id", "firstName", "lastName"] },
-    ],
-  });
-
-  const reviewCount = await Review.count({
-    where: {
-      spotId: spotId,
-    },
-  });
-
-  spot.numReviews = reviewCount;
-
-  const reviews = await Review.findAll({
-    where: {
-      spotId: spotId,
-    },
-    attributes: [[sequelize.fn("AVG", sequelize.col("stars")), "avgRating"]],
-    raw: true,
-  });
-
-  for (let i = 0; i < reviews.length; i++) {
-    if (parseFloat(reviews[0].avgRating).toFixed(1) === "NaN") {
-      spot.avgRating = "No ratings yet";
-    } else {
-      spot.avgRating = parseFloat(reviews[0].avgRating).toFixed(1);
-    }
-  }
-
-  if (!spotDetails) {
-    const error = Error("Spot couldn't be found");
-    error.status = 404;
-    next(error);
-  } else {
-    spot.Owner = spotDetails.Owner;
-    spot.SpotImages = spotDetails.SpotImages;
-
-    res.status(200);
-    res.json(spot);
-  }
-});
 
 //* Delete a Spot
 router.delete("/:spotId", requireAuth, async (req, res, next) => {
