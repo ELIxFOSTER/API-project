@@ -92,6 +92,7 @@ router.post("/:spotId/bookings", requireAuth, async (req, res, next) => {
       error.errors = {
         startDate: "Start date conflicts with an exists booking",
       };
+      next(error)
     }
 
     if (
@@ -105,6 +106,7 @@ router.post("/:spotId/bookings", requireAuth, async (req, res, next) => {
       error.errors = {
         startDate: "Start date conflicts with an exists booking",
       };
+      next(error)
     }
 
     if (
