@@ -202,6 +202,7 @@ router.delete("/:bookingId", requireAuth, async (req, res, next) => {
   const userId = req.user.id;
 
   const booking = await Booking.findByPk(bookingId);
+  const spot = await Spot.findByPk(booking.spotId)
 
   if (!booking) {
     const error = Error("Booking couldn't be found");
@@ -217,12 +218,18 @@ router.delete("/:bookingId", requireAuth, async (req, res, next) => {
     return
   }
 
-  await booking.destroy();
-  res.status(200);
-  return res.json({
-    message: "Successfully deleted",
-    statusCode: 200,
-  });
+  if (booking.userId === userId || userId === spot.ownerId) {
+    await booking.destroy();
+    res.status(200);
+    return res.json({
+      message: "Successfully deleted",
+      statusCode: 200,
+    });
+  } else {
+    const error = Error('Forbidden')
+    error.status = 403
+    next(error)
+  }
 });
 
 module.exports = router;
