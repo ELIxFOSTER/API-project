@@ -138,7 +138,7 @@ router.put(
       if (findReview.userId !== userId) {
         const error = Error("Permission denied");
         error.status = 404;
-        next(error);
+        return next(error);
       } else {
         if (review) {
           findReview.review = review;
@@ -152,7 +152,7 @@ router.put(
     } else {
       const error = Error("Review couldn't be found");
       error.status = 404;
-      next(error);
+      return next(error);
     }
   }
 );
@@ -175,14 +175,14 @@ router.post("/:reviewId/images", requireAuth, async (req, res, next) => {
     if (review.userId !== userId) {
       const error = Error("Permission denied");
       error.status = 403;
-      next(error);
+      return next(error);
     } else {
       if (review.ReviewImages.length === 10) {
         const error = Error(
           "Maximum number of images for this resource was reached"
         );
         error.status = 403;
-        next(error);
+        return next(error);
       } else {
         const newImage = await ReviewImage.build({
           url,
@@ -203,7 +203,7 @@ router.post("/:reviewId/images", requireAuth, async (req, res, next) => {
   } else {
     const error = Error("Review couldn't be found");
     error.status = 404;
-    next(error);
+    return next(error);
   }
 });
 

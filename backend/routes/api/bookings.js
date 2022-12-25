@@ -32,7 +32,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
   if (!booking) {
     const error = Error("Booking couldn't be found")
     error.status = 404
-    next(error)
+    return next(error)
   }
 
   if (endDate <= startDate) {
@@ -41,25 +41,25 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
     error.errors = {
       endDate: "endDate cannot be on or before startDate",
     };
-    next(error);
+    return next(error);
   }
 
   if (userId !== booking.userId) {
     const error = Error("Forbidden");
     error.status = 403;
-    next(error);
+    return next(error);
   }
 
   if (!booking) {
     const error = Error("Forbidden");
     error.status = 403;
-    next(error);
+    return next(error);
   }
 
   if (new Date() > booking.endDate) {
     const error = Error("Past bookings can't be modified");
     error.status = 403;
-    next(error);
+    return next(error);
   }
 
   const spot = await Spot.findByPk(booking.spotId);
@@ -84,6 +84,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       error.errors = {
         startDate: "Start date conflicts with an exists booking",
       };
+      return next(error)
     }
 
     if (
@@ -98,6 +99,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       error.errors = {
         startDate: "Start date conflicts with an exists booking",
       };
+      return next(error)
     }
 
     if (
@@ -112,7 +114,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       error.errors = {
         startDate: "Start date conflicts with an existing booking",
       };
-      next(error);
+      return next(error);
     }
 
     if (
@@ -126,7 +128,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       error.errors = {
         startDate: "Start date conflicts with an existing booking",
       };
-      next(error);
+      return next(error);
     }
   }
 
@@ -135,6 +137,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       startDate,
       endDate,
     });
+
     await editedBooking.save();
 
     res.status(200);
@@ -210,8 +213,7 @@ router.delete("/:bookingId", requireAuth, async (req, res, next) => {
     if (booking.startDate < new Date()) {
       const error = Error("Bookings that have been started can't be deleted");
       error.status = 403;
-      next(error);
-      return
+      return next(error);
     }
 
     if (booking.userId === userId || userId === spot.ownerId) {
@@ -224,12 +226,12 @@ router.delete("/:bookingId", requireAuth, async (req, res, next) => {
     } else {
       const error = Error('Forbidden')
       error.status = 403
-      next(error)
+      return next(error)
     }
   } else {
     const error = Error("Booking couldn't be found")
     error.status = 404
-    next(error)
+    return next(error)
   }
 });
 

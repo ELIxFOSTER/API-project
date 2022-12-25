@@ -16,14 +16,14 @@ const reviewImage = await ReviewImage.findByPk(imageId)
 if (!reviewImage) {
   const error = Error("Review Image couldn't be found")
   error.status = 404
-  next(error)
+  return next(error)
 }
 const review = await Review.findByPk(reviewImage.reviewId)
 
 if (review.userId !== userId) {
   const error = Error('Forbidden')
   error.status = 403
-  next(error)
+  return next(error)
 } else {
   await reviewImage.destroy()
   res.status(200)

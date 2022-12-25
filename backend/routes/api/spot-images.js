@@ -27,7 +27,7 @@ router.delete("/:imageId", requireAuth, async (req, res, next) => {
     if (spot.ownerId !== userId) {
       const error = Error("Permission denied");
       error.status = 403;
-      next(error);
+      return next(error);
     } else {
       await spotImage.destroy();
       res.status(200);
@@ -39,7 +39,7 @@ router.delete("/:imageId", requireAuth, async (req, res, next) => {
   } else {
     const error = Error("Spot image couldn't be found");
     error.status = 404;
-    next(error);
+    return next(error);
   }
 });
 
