@@ -24,15 +24,14 @@ const validateBooking = [
 router.put("/:bookingId", requireAuth, async (req, res, next) => {
   const { bookingId } = req.params;
   const { startDate, endDate } = req.body;
-  const userId = req.user.id
-
+  const userId = req.user.id;
 
   const booking = await Booking.findByPk(bookingId);
 
   if (!booking) {
-    const error = Error("Booking couldn't be found")
-    error.status = 404
-    return next(error)
+    const error = Error("Booking couldn't be found");
+    error.status = 404;
+    return next(error);
   }
 
   if (endDate <= startDate) {
@@ -70,13 +69,13 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
     },
   });
 
-  let flag = false
+  let flag = false;
 
   for (let i = 0; i < allBookings.length; i++) {
     let jsonBooking = allBookings[i].toJSON();
 
     if (jsonBooking.startDate === startDate) {
-      flag = true
+      flag = true;
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
       );
@@ -84,14 +83,14 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       error.errors = {
         startDate: "Start date conflicts with an exists booking",
       };
-      return next(error)
+      return next(error);
     }
 
     if (
       new Date(startDate).getTime() < new Date(jsonBooking.endDate).getTime() &&
       new Date(startDate).getTime() > new Date(jsonBooking.startDate).getTime()
     ) {
-      flag = true
+      flag = true;
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
       );
@@ -99,14 +98,14 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       error.errors = {
         startDate: "Start date conflicts with an exists booking",
       };
-      return next(error)
+      return next(error);
     }
 
     if (
       new Date(startDate).getTime() ===
       new Date(jsonBooking.startDate).getTime()
     ) {
-      flag = true
+      flag = true;
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
       );
@@ -120,7 +119,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
     if (
       new Date(startDate).getTime() === new Date(jsonBooking.endDate).getTime()
     ) {
-      flag = true
+      flag = true;
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
       );
@@ -128,6 +127,14 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       error.errors = {
         startDate: "Start date conflicts with an existing booking",
       };
+      return next(error);
+    }
+    if (
+      new Date(jsonBooking.endDate).getTime() < new Date().getTime() ||
+      new Date(jsonBooking.startDate).getTime() < new Date().getTime()
+    ) {
+      const error = Error("Dates cannot be changed to the past");
+      error.status = 403;
       return next(error);
     }
   }
@@ -144,15 +151,13 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
     console.log(editedBooking);
     return res.json(editedBooking);
   } else {
-    return
+    return;
   }
-
 });
 
 //* Get all of the Current User's Bookings
 router.get("/current", requireAuth, async (req, res, next) => {
   const userId = req.user.id;
-
 
   const bookings = await Booking.findAll({
     where: {
@@ -206,10 +211,8 @@ router.delete("/:bookingId", requireAuth, async (req, res, next) => {
 
   const booking = await Booking.findByPk(bookingId);
 
-
-
   if (booking) {
-    const spot = await Spot.findByPk(booking.spotId)
+    const spot = await Spot.findByPk(booking.spotId);
     if (booking.startDate < new Date()) {
       const error = Error("Bookings that have been started can't be deleted");
       error.status = 403;
@@ -224,14 +227,14 @@ router.delete("/:bookingId", requireAuth, async (req, res, next) => {
         statusCode: 200,
       });
     } else {
-      const error = Error('Forbidden')
-      error.status = 403
-      return next(error)
+      const error = Error("Forbidden");
+      error.status = 403;
+      return next(error);
     }
   } else {
-    const error = Error("Booking couldn't be found")
-    error.status = 404
-    return next(error)
+    const error = Error("Booking couldn't be found");
+    error.status = 404;
+    return next(error);
   }
 });
 
