@@ -73,10 +73,11 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
     //? startDate (< before) booking end (&&) startDate (> after) booking start
     //? endDate (< before) booking end (&&) endDate (> after) booking start
 
+
     if (
-      new Date(startDate).getTime() ===
-        new Date(jsonBooking.startDate).getTime() ||
-      new Date(startDate).getTime() === new Date(jsonBooking.endDate).getTime()
+      ( new Date(startDate).getTime() ===
+        new Date(jsonBooking.startDate).getTime() ) && (jsonBooking.id !== parseInt(bookingId)) ||
+      (new Date(startDate).getTime() === new Date(jsonBooking.endDate).getTime()) && (jsonBooking.id !== parseInt(bookingId))
     ) {
       flag = true;
       const error = Error(
@@ -89,8 +90,8 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       return next(error);
     }
     if (
-      new Date(endDate).getTime() === new Date(jsonBooking.endDate).getTime() ||
-      new Date(endDate).getTime() === new Date(jsonBooking.startDate).getTime()
+      (new Date(endDate).getTime() === new Date(jsonBooking.endDate).getTime()) && (jsonBooking.id !== parseInt(bookingId)) ||
+      (new Date(endDate).getTime() === new Date(jsonBooking.startDate).getTime()) && (jsonBooking.id !== parseInt(bookingId))
     ) {
       flag = true;
       const error = Error(
@@ -103,8 +104,8 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       return next(error);
     }
     if (
-      new Date(startDate).getTime() < new Date(jsonBooking.endDate).getTime() &&
-      new Date(startDate).getTime() > new Date(jsonBooking.startDate).getTime()
+      (new Date(startDate).getTime() < new Date(jsonBooking.endDate).getTime() &&
+      new Date(startDate).getTime() > new Date(jsonBooking.startDate).getTime()) && (jsonBooking.id !== parseInt(bookingId))
     ) {
       flag = true;
       const error = Error(
@@ -118,8 +119,8 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
     }
 
     if (
-      new Date(endDate).getTime() < new Date(jsonBooking.endDate).getTime() &&
-      new Date(endDate).getTime() > new Date(jsonBooking.startDate).getTime()
+      (new Date(endDate).getTime() < new Date(jsonBooking.endDate).getTime() &&
+      new Date(endDate).getTime() > new Date(jsonBooking.startDate).getTime()) && (jsonBooking.id !== parseInt(bookingId))
     ) {
       flag = true;
       const error = Error(
