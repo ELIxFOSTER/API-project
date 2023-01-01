@@ -258,7 +258,7 @@ router.put(
     if (spot) {
       if (spot.ownerId !== ownerId) {
         const error = Error("Forbidden");
-        error.status = 404;
+        error.status = 403;
         return next(error);
       } else {
         spot.address = address;
