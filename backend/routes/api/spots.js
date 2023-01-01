@@ -396,7 +396,7 @@ router.delete("/:spotId", requireAuth, async (req, res, next) => {
 
   if (spot) {
     if (spot.ownerId !== ownerId) {
-      const error = Error("Permission denied");
+      const error = Error("Forbidden");
       error.status = 404;
       return next(error);
     } else {
