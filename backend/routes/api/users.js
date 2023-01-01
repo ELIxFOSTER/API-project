@@ -10,11 +10,11 @@ const validateSignup = [
   check("email")
     .exists({ checkFalsy: true })
     .isEmail()
-    .withMessage("Please provide a valid email."),
+    .withMessage("Invalid email"),
   check("username")
     .exists({ checkFalsy: true })
     .isLength({ min: 4 })
-    .withMessage("Please provide a username with at least 4 characters."),
+    .withMessage("Username is required"),
   check("username").not().isEmail().withMessage("Username cannot be an email."),
   check('firstName')
   .exists({ checkFalsy: true })
@@ -76,6 +76,7 @@ router.post("/", validateSignup, async (req, res, next) => {
   resObj.firstName = user.firstName
   resObj.lastName = user.lastName
   resObj.username = user.username
+  resObj.email = user.email
   resObj.token = token
 
   res.status(200)

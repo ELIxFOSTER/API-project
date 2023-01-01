@@ -50,12 +50,12 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
   }
 
   if (!booking) {
-    const error = Error("Forbidden");
-    error.status = 403;
+    const error = Error("Booking couldn't be found");
+    error.status = 404;
     return next(error);
   }
 
-  if (new Date() > booking.endDate) {
+  if (new Date().getTime() > booking.endDate.getTime()) {
     const error = Error("Past bookings can't be modified");
     error.status = 403;
     return next(error);
@@ -74,7 +74,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
   for (let i = 0; i < allBookings.length; i++) {
     let jsonBooking = allBookings[i].toJSON();
 
-    if (jsonBooking.startDate === startDate) {
+    if (new Date(jsonBooking.startDate).getTime() === new Date(startDate).getTime()) {
       flag = true;
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"

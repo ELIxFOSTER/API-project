@@ -46,7 +46,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
           ],
         },
       },
-      { model: Spot, attributes: { exclude: ["createdAt", "updatedAt"], } },
+      { model: Spot, attributes: { exclude: ["createdAt", "updatedAt", "description"], } },
       {
         model: ReviewImage,
         attributes: { exclude: ["createdAt", "updatedAt", "reviewId"] },
@@ -71,6 +71,8 @@ router.get("/current", requireAuth, async (req, res, next) => {
 
     if (spotImage) {
       reviewJson.Spot.previewImage = spotImage.url
+    } else {
+      reviewJson.Spot.previewImage = "No preview image url"
     }
 
     Reviews.push(reviewJson)
@@ -94,7 +96,7 @@ router.delete("/:reviewId", requireAuth, async (req, res, next) => {
 
   if (review) {
     if (review.userId !== userId) {
-      const error = Error("Permission denied");
+      const error = Error("Forbidden");
       error.status = 404;
       next(error);
     } else {

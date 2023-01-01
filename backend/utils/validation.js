@@ -32,6 +32,12 @@ const validateSpotCreation = [
   check('state')
   .exists({ checkFalsy: true })
   .withMessage('State is required'),
+  check("lat")
+  .isFloat()
+  .withMessage("Latitude is not valid"),
+  check("lng")
+  .isFloat()
+  .withMessage("Longitude is not valid"),
   check('country')
   .exists({ checkFalsy: true })
   .withMessage('Country is required'),
