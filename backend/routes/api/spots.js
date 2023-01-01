@@ -22,7 +22,7 @@ const {
 } = require("../../utils/validation");
 const { get } = require("./bookings");
 const spot = require("../../db/models/spot");
-const { InstanceError } = require("sequelize");
+const { InstanceError, json } = require("sequelize");
 
 const validateEditedSpot = [
   check("address")
@@ -113,66 +113,49 @@ router.post("/:spotId/bookings", requireAuth, async (req, res, next) => {
   for (let i = 0; i < allBookings.length; i++) {
     let jsonBooking = allBookings[i].toJSON();
 
-    if (jsonBooking.startDate === startDate) {
-      flag = true;
-      const error = Error(
-        "Sorry, this spot is already booked for the specific dates"
-      );
-      error.status = 403;
+  //? startDate === booking start (||) startDate === booking end
+    //? endDate === booking end (||) endDate === booking start
+    //? startDate (< before) booking end (&&) startDate (> after) booking start
+    //? endDate (< before) booking end (&&) endDate (> after) booking start
+
+    if (new Date(startDate).getTime() === new Date(jsonBooking.startDate).getTime() || new Date(startDate).getTime() === new Date(jsonBooking.endDate).getTime()) {
+      flag = true
+      const error = Error("Sorry, this spot is already booked for the specific dates")
+      error.status = 403
       error.errors = {
-        startDate: "Start date conflicts with an exists booking",
-      };
-      return next(error);
-    } else if (
-      new Date(startDate).getTime() < new Date(jsonBooking.endDate).getTime() &&
-      new Date(startDate).getTime() > new Date(jsonBooking.startDate).getTime()
-    ) {
-      flag = true;
-      const error = Error(
-        "Sorry, this spot is already booked for the specific dates"
-      );
-      error.status = 403;
+        startDate: "Start date conflicts with an existing booking"
+      }
+      return next(error)
+    }
+
+    if (new Date(endDate).getTime() === new Date(jsonBooking.endDate).getTime() || new Date(endDate).getTime() === new Date(jsonBooking.startDate).getTime()) {
+      flag = true
+      const error = Error("Sorry, this spot is already booked for the specific dates")
+      error.status = 403
       error.errors = {
-        startDate: "Start date conflicts with an exists booking",
-      };
-      return next(error);
-    } else if (
-      new Date(startDate).getTime() ===
-      new Date(jsonBooking.startDate).getTime()
-    ) {
-      flag = true;
-      const error = Error(
-        "Sorry, this spot is already booked for the specific dates"
-      );
-      error.status = 403;
+        endDate: "End date conflicts with an existing booking"
+      }
+      return next(error)
+    }
+
+    if (new Date(startDate).getTime() < new Date(jsonBooking.endDate).getTime() && new Date(startDate).getTime() > new Date(jsonBooking.startDate).getTime()) {
+      flag = true
+      const error = Error("Sorry, this spot is already booked for the specific dates")
+      error.status = 403
       error.errors = {
-        startDate: "Start date conflicts with an existing booking",
-      };
-      return next(error);
-    } else if (
-      new Date(startDate).getTime() === new Date(jsonBooking.endDate).getTime()
-    ) {
-      flag = true;
-      const error = Error(
-        "Sorry, this spot is already booked for the specific dates"
-      );
-      error.status = 403;
+        startDate: "Start date conflicts with an existing booking"
+      }
+      return next(error)
+    }
+
+    if (new Date(endDate).getTime() < new Date(jsonBooking.endDate).getTime() && new Date(endDate).getTime() > new Date(jsonBooking.startDate).getTime()) {
+      flag = true
+      const error = Error("Sorry, this spot is already booked for the specific dates")
+      error.status = 403
       error.errors = {
-        startDate: "Start date conflicts with an existing booking",
-      };
-      return next(error);
-    } else if (
-      new Date(endDate).getTime() > new Date(jsonBooking.startDate).getTime() &&
-      new Date(endDate).getTime() < new Date(jsonBooking.endDate).getTime()
-    ) {
-      flag = true;
-      const error = Error(
-        "Sorry, this spot is already booking for the specific dates"
-      );
-      error.status = 403;
-      error.errors = {
-        endDate: "End date conflicts with an existing booking",
-      };
+        endDate: "End date conflicts with an existing booking"
+      }
+      return next(error)
     }
   }
 
