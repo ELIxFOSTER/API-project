@@ -8,7 +8,7 @@ const {
 } = require("../../utils/auth");
 const { Spot, SpotImage, Booking } = require("../../db/models");
 const { check } = require("express-validator");
-const { Op } = require("sequelize");
+const { Op, json } = require("sequelize");
 const { handleValidationErrors } = require("../../utils/validation");
 
 const validateBooking = [
@@ -49,12 +49,6 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
     return next(error);
   }
 
-  if (!booking) {
-    const error = Error("Booking couldn't be found");
-    error.status = 404;
-    return next(error);
-  }
-
   if (new Date().getTime() > new Date(booking.endDate).getTime()) {
     const error = Error("Past bookings can't be modified");
     error.status = 403;
@@ -74,49 +68,14 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
   for (let i = 0; i < allBookings.length; i++) {
     let jsonBooking = allBookings[i].toJSON();
 
-    if (new Date(jsonBooking.startDate).getTime() === new Date(startDate).getTime()) {
-      flag = true;
-      const error = Error(
-        "Sorry, this spot is already booked for the specific dates"
-      );
-      error.status = 403;
-      error.errors = {
-        startDate: "Start date conflicts with an exists booking",
-      };
-      return next(error);
-    }
-
-    if (
-      new Date(startDate).getTime() < new Date(jsonBooking.endDate).getTime() &&
-      new Date(startDate).getTime() > new Date(jsonBooking.startDate).getTime()
-    ) {
-      flag = true;
-      const error = Error(
-        "Sorry, this spot is already booked for the specific dates"
-      );
-      error.status = 403;
-      error.errors = {
-        startDate: "Start date conflicts with an exists booking",
-      };
-      return next(error);
-    }
+    //? startDate === booking start (||) startDate === booking end
+    //? endDate === booking end (||) endDate === booking start
+    //? startDate (< before) booking end (&&) startDate (> after) booking start
+    //? endDate (< before) booking end (&&) endDate (> after) booking start
 
     if (
       new Date(startDate).getTime() ===
-      new Date(jsonBooking.startDate).getTime()
-    ) {
-      flag = true;
-      const error = Error(
-        "Sorry, this spot is already booked for the specific dates"
-      );
-      error.status = 403;
-      error.errors = {
-        startDate: "Start date conflicts with an existing booking",
-      };
-      return next(error);
-    }
-
-    if (
+        new Date(jsonBooking.startDate).getTime() ||
       new Date(startDate).getTime() === new Date(jsonBooking.endDate).getTime()
     ) {
       flag = true;
@@ -130,13 +89,112 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       return next(error);
     }
     if (
-      new Date(endDate).getTime() < new Date().getTime() ||
-      new Date(startDate).getTime() < new Date().getTime()
+      new Date(endDate).getTime() === new Date(jsonBooking.endDate).getTime() ||
+      new Date(endDate).getTime() === new Date(jsonBooking.startDate).getTime()
     ) {
-      const error = Error("Dates cannot be changed to the past");
+      flag = true;
+      const error = Error(
+        "Sorry, this spot is already booked for the specific dates"
+      );
       error.status = 403;
+      error.errors = {
+        endDate: "End date conflicts with an existing booking",
+      };
       return next(error);
     }
+    if (
+      new Date(startDate).getTime() < new Date(jsonBooking.endDate).getTime() &&
+      new Date(startDate).getTime() > new Date(jsonBooking.startDate).getTime()
+    ) {
+      flag = true;
+      const error = Error(
+        "Sorry, this spot is already booked for the specific dates"
+      );
+      error.status = 403;
+      error.errors = {
+        startDate: "Start date conflicts with an existing booking",
+      };
+      return next(error);
+    }
+
+    if (
+      new Date(endDate).getTime() < new Date(jsonBooking.endDate).getTime() &&
+      new Date(endDate).getTime() > new Date(jsonBooking.startDate).getTime()
+    ) {
+      flag = true;
+      const error = Error(
+        "Sorry, this spot is already booked for the specific dates"
+      );
+      error.status = 403;
+      error.errors = {
+        endDate: "End date conflicts with an existing booking",
+      };
+      return next(error)
+    }
+
+    // if (new Date(jsonBooking.startDate).getTime() === new Date(startDate).getTime()) {
+    //   flag = true;
+    //   const error = Error(
+    //     "Sorry, this spot is already booked for the specific dates"
+    //   );
+    //   error.status = 403;
+    //   error.errors = {
+    //     startDate: "Start date conflicts with an exists booking",
+    //   };
+    //   return next(error);
+    // }
+
+    // if (
+    //   new Date(startDate).getTime() < new Date(jsonBooking.endDate).getTime() &&
+    //   new Date(startDate).getTime() > new Date(jsonBooking.startDate).getTime()
+    // ) {
+    //   flag = true;
+    //   const error = Error(
+    //     "Sorry, this spot is already booked for the specific dates"
+    //   );
+    //   error.status = 403;
+    //   error.errors = {
+    //     startDate: "Start date conflicts with an exists booking",
+    //   };
+    //   return next(error);
+    // }
+
+    // if (
+    //   new Date(startDate).getTime() ===
+    //   new Date(jsonBooking.startDate).getTime()
+    // ) {
+    //   flag = true;
+    //   const error = Error(
+    //     "Sorry, this spot is already booked for the specific dates"
+    //   );
+    //   error.status = 403;
+    //   error.errors = {
+    //     startDate: "Start date conflicts with an existing booking",
+    //   };
+    //   return next(error);
+    // }
+
+    // if (
+    //   new Date(startDate).getTime() === new Date(jsonBooking.endDate).getTime()
+    // ) {
+    //   flag = true;
+    //   const error = Error(
+    //     "Sorry, this spot is already booked for the specific dates"
+    //   );
+    //   error.status = 403;
+    //   error.errors = {
+    //     startDate: "Start date conflicts with an existing booking",
+    //   };
+    //   return next(error);
+    // }
+    // if (
+    //   new Date(endDate).getTime() < new Date().getTime() ||
+    //   new Date(startDate).getTime() < new Date().getTime()
+    // ) {
+    //   const error = Error("Dates cannot be changed to the past");
+    //   error.status = 403;
+    //   return next(error);
+    // }
   }
 
   if (flag === false) {
