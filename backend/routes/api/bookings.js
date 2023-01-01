@@ -130,8 +130,8 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
       return next(error);
     }
     if (
-      new Date(jsonBooking.endDate).getTime() < new Date().getTime() ||
-      new Date(jsonBooking.startDate).getTime() < new Date().getTime()
+      new Date(endDate).getTime() < new Date().getTime() ||
+      new Date(startDate).getTime() < new Date().getTime()
     ) {
       const error = Error("Dates cannot be changed to the past");
       error.status = 403;
