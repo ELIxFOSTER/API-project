@@ -74,7 +74,7 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
   for (let i = 0; i < allBookings.length; i++) {
     let jsonBooking = allBookings[i].toJSON();
 
-    if (new Date(jsonBooking.startDate).getTime() === new Date(startDate.getTime()) {
+    if (new Date(jsonBooking.startDate).getTime() === new Date(startDate.getTime())) {
       flag = true;
       const error = Error(
         "Sorry, this spot is already booked for the specific dates"
