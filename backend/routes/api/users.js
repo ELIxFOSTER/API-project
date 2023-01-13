@@ -75,12 +75,11 @@ router.post("/", validateSignup, async (req, res, next) => {
   resObj.id = user.id
   resObj.firstName = user.firstName
   resObj.lastName = user.lastName
-  resObj.username = user.username
   resObj.email = user.email
-  resObj.token = token
+  resObj.username = user.username
 
   res.status(200)
-  return res.json(resObj)
+  return res.json( { user: resObj})
 });
 
 module.exports = router;
