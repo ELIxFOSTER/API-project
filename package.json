@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ELIxFOSTER/API-Project.git"
+  },"devDependencies": {},
   "scripts": {
     "render-postbuild": "npm run build --prefix frontend",
     "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
@@ -12,10 +16,6 @@
     "sequelize-cli": "npm run --prefix backend sequelize-cli",
     "start": "npm start --prefix backend",
     "build": "npm run build --prefix backend"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ELIxFOSTER/API-Project.git"
   },
   "keywords": [],
   "author": "",
