@@ -28,8 +28,14 @@ module.exports = (sequelize, DataTypes) => {
     city: DataTypes.STRING,
     state: DataTypes.STRING,
     country: DataTypes.STRING,
-    lat: DataTypes.FLOAT,
-    lng: DataTypes.FLOAT,
+    lat: {
+      type: DataTypes.FLOAT,
+      allowNull: true
+    },
+    lng: {
+      type: DataTypes.FLOAT,
+      allowNull: true
+    },
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     price: DataTypes.DECIMAL

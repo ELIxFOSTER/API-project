@@ -69,6 +69,18 @@ module.exports = {
         name: "Fifth Spot",
         description: "Last but not least desc. #5",
         price: 555
+      },
+      {
+        ownerId: 3,
+        address: "666 Example St",
+        city: "Mexico",
+        state: "MX",
+        country: "US",
+        lat: 43.0001,
+        lng: 43.0001,
+        name: "Sixth Spot",
+        description: "Last but not least desc. #6",
+        price: 1000
       }
     ], {});
   },

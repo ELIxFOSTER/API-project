@@ -1,0 +1,15 @@
+.spot-card {
+    width: 25%;
+    height: 25%;
+    size: 5px;
+    border-radius: 25px;
+    display: flexbox;
+    justify-content: center;
+    border: 2px solid grey;
+}
+
+.spot-card-img {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+}

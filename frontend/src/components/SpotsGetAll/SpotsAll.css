@@ -1,0 +1,8 @@
+.all-spots {
+    width: 1000px;
+    height: 1000px;
+    border: 5px solid black;
+    display: inline;
+    justify-content: space-between;
+    align-items: center;
+}

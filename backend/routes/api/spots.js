@@ -32,8 +32,8 @@ const validateEditedSpot = [
   check("country")
     .exists({ checkFalsy: true })
     .withMessage("Country is required"),
-  check("lat").isFloat().withMessage("Longitude is not valid"),
-  check("lng").isFloat().withMessage("Latitude is not valid"),
+  // check("lat").isFloat().withMessage("Longitude is not valid"),
+  // check("lng").isFloat().withMessage("Latitude is not valid"),
   check("name")
     .isLength({ max: 50 })
     .withMessage("Name must be less than 50 characters"),
