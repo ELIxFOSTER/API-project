@@ -7,6 +7,7 @@ import SignupFormModal from '../SignupFormModal';
 import ListingsButton from "../ManageListings/ListingButton";
 import { NavLink } from "react-router-dom";
 import { unstable_renderSubtreeIntoContainer } from "react-dom";
+import './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ function ProfileButton({ user }) {
     //   if (!ulRef.current.contains(e.target)) {
     //     setShowMenu(false);
     //   }
-    // };   //! Works without this idk why??
+    // };
 
     document.addEventListener('click', closeMenu);
 
@@ -55,8 +56,8 @@ function ProfileButton({ user }) {
     <>
       <button onClick={openMenu} className='nav-bar-button' >
         <>
-        <i className='fa-solid fa-bars' />
-        <i className='fa-solid fa-circle-user' />
+        <i className='fa-solid fa-bars fa-lg' id='profile-bars'/>
+        <i className='fa-solid fa-circle-user fa-2x' id='profile-icon'/>
         </>
       </button>
       <ul className={ulClassName} ref={ulRef}>
@@ -75,18 +76,20 @@ function ProfileButton({ user }) {
             </li>
           </>
         ) : (
-          <>
-            <OpenModalMenuItem
-              itemText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
+          <div className='popout-menu'>
             <OpenModalMenuItem
               itemText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
+              className='signup-button'
             />
-          </>
+            <OpenModalMenuItem
+              itemText="Log In"
+              onItemClick={closeMenu}
+              modalComponent={<LoginFormModal />}
+              className='login-button'
+            />
+          </div>
         )}
       </ul>
     </>

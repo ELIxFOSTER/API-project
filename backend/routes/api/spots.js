@@ -662,7 +662,7 @@ router.get(
       });
 
       if (parseFloat(review[0].avgRating).toFixed(1) === "NaN") {
-        spots[i].avgRating = "No ratings yet";
+        spots[i].avgRating = "New";
       } else {
         spots[i].avgRating = parseFloat(review[0].avgRating).toFixed(1);
       }

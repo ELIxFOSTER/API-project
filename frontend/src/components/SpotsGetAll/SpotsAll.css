@@ -2,14 +2,22 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     position: relative;
     justify-content: center;
-    margin: 25px;
+    box-sizing: border-box;
+    padding-left: 60px;
+    padding-right: 60px;
+    gap: 24px
 }
 
 .all-spots-card-wrapper {
-    border: 2px solid green;
+    /* border: 2px solid green; */
     width: 100%;
-    height: 100%
+    height: 100%;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    width: 100%;
+    margin: 115px
 }

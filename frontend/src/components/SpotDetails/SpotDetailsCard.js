@@ -4,6 +4,7 @@ import { getSpotDetails } from "../../store/spots";
 import { NavLink, useParams } from "react-router-dom";
 import DeleteSpot from "../DeleteSpot";
 import { useSelector } from "react-redux";
+import selfCheckIn from '../../images/selfCheckIn.png'
 
 export default function SpotDetailCard({ spot }) {
     const sessionUser = useSelector(state => state.session.user)
@@ -50,7 +51,7 @@ export default function SpotDetailCard({ spot }) {
             </div>
             <div>
                 <div>
-                    <img src={'frontend/src/images/self-checkin.png'} ></img>
+                    {/* <img src={selfCheckIn} ></img> */}
                     <span>Self check-in</span>
                 </div>
                 <div>

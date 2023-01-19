@@ -38,6 +38,7 @@ function App() {
       </Route>
 
       <Route exact path={`/listings`} >
+        <Navigation isLoaded={isLoaded} />
         <ManageListings />
       </Route>
 
