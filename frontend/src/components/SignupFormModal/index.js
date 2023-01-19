@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from "../../store/session";
-import "./SignupForm.css";
+import './SignupForm.css';
 
 function SignupFormModal() {
   const dispatch = useDispatch();
@@ -13,40 +13,44 @@ function SignupFormModal() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false)
   const { closeModal } = useModal();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      setErrors([]);
-      return dispatch(
-        sessionActions.signup({
-          email,
-          username,
-          firstName,
-          lastName,
-          password,
-        })
-      )
-        .then(closeModal)
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+    setHasSubmitted(true)
+
+    if (password !== confirmPassword) return setErrors({ confirmPassword: 'Passwords do not match'})
+
+    setErrors({})
+    const singupData = {
+      firstName,
+      lastName,
+      email,
+      username,
+      password
     }
-    return setErrors([
-      "Confirm Password field must be the same as the Password field",
-    ]);
+
+    return dispatch(sessionActions.signup(singupData))
+    .then(closeModal)
+    .catch(async (res) => {
+      const data = await res.json()
+      if (data && data.errors) setErrors(data.errors)
+    })
   };
+
 
   return (
     <>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
+          {errors.firstName ? errors.firstName : null}
+          {errors.lastName ? errors.lastName : null}
+          {errors.username ? errors.username : null}
+          {errors.password ? errors.password : null}
+          {errors.confirmPassword ? errors.confirmPassword : null}
+          {errors.email ? errors.email : null}
         </ul>
         <label>
           Email

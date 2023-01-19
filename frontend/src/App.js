@@ -5,9 +5,9 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import AllSpots from "./components/SpotsGetAll";
 import SpotDetails from "./components/SpotDetails";
-import CreateSpotForm from "./components/CreateSpotForm";
 import ManageListings from "./components/ManageListings";
 import NewSpotForm from "./components/ManageListings/form";
+import EditSpot from "./components/EditSpot";
 
 
 
@@ -29,11 +29,12 @@ function App() {
       </Route>
 
       <Route exact path={'/spots/:spotId'} >
+        <Navigation isLoaded={isLoaded} />
         <SpotDetails />
       </Route>
 
       <Route exact path={'/hosting/home'} >
-        <CreateSpotForm />
+        <NewSpotForm />
       </Route>
 
       <Route exact path={`/listings`} >
@@ -42,6 +43,10 @@ function App() {
 
       <Route exact path={'/create-from'} >
         <NewSpotForm />
+      </Route>
+
+      <Route exact path={'/edit-spot/:spotId'} >
+        <EditSpot />
       </Route>
 
     </Switch>

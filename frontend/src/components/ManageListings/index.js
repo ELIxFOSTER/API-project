@@ -9,8 +9,7 @@ const dispatch = useDispatch()
 const [spots, setSpots] = useState([])
 
 const currUserSpots = useSelector((state) => Object.values(state.spots.AllSpots))
-// const currUserSpots = []
-console.log(currUserSpots.length)
+
 
 useEffect(() => {
     const fetchData = async () => {
@@ -19,6 +18,8 @@ useEffect(() => {
     }
     fetchData()
 }, [dispatch])
+
+// if (!currUserSpots.length) return null
 
     return (
         <>
@@ -30,9 +31,11 @@ useEffect(() => {
             currUserSpots.map((spot) => {
                 return (
                     <>
-                    <li>{spot.name}</li>
-                    <li>{spot.price}</li>
-                    <img src={spot.previewImage} />
+                    <NavLink to={`/spots/${spot.id}`}>
+                        <li>{spot.name}</li>
+                        <li>{spot.price}</li>
+                        <img src={spot.previewImage} />
+                    </NavLink>
                     </>
                 )
             })

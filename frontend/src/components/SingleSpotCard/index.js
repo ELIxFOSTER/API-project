@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom';
 
 
 export default function SpotCard( { spot }) {
-    console.log(spot)
     return (
         <>
         <NavLink to={`/spots/${spot.id}`}>
@@ -15,10 +14,13 @@ export default function SpotCard( { spot }) {
                 <img className='spot-card-img' src={spot.previewImage} ></img>
             </div>
             <div>
-                <h1>{spot.name}</h1>
+                <span>{spot.name}</span>
             </div>
             <div>
-            <h4>${spot.price}</h4>
+                <span>{spot.city}</span>
+            </div>
+            <div>
+                <span>{spot.price}</span>
             </div>
         </div>
         </NavLink>

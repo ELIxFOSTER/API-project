@@ -1,38 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import * as spotsActions from '../../store/spots'
+import { getAllSpots } from '../../store/spots';
 import SpotCard from '../SingleSpotCard';
 import './SpotsAll.css'
 
 
 export default function AllSpots() {
     const dispatch = useDispatch()
-    const [spots, setSpots] = useState([])
 
+    const allSpots = useSelector((state) => state.spots.AllSpots)
+    const spots = Object.values(allSpots)
 
-    const allSpots = useSelector((state) => Object.values(state.spots.AllSpots))
 
     useEffect(() => {
-            const  fetchData = async () => {
-            const response = await dispatch(spotsActions.getAllSpots())
-            setSpots(response)
-        }
-        fetchData()
-        // return dispatch(spotsActions.getAllSpots())
+        dispatch(getAllSpots())
     }, [dispatch])
 
+    if (!spots.length) return null
 
     return (
         <>
-            <h1>Home for Get All Spots</h1>
-            <div className='all-spots' >
+        <div className='all-spots-card-wrapper' >
+            <div className='all-spots-card-container' >
             {spots.map((spot) => {
                 return (
                    <SpotCard key={spot.name} spot={spot} />
                 )
             })}
             </div>
-            <h1>Yo</h1>
+        </div>
         </>
     )
 }

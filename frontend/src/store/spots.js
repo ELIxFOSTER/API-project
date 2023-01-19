@@ -35,6 +35,7 @@ const loadCurrentUserSpots = (spots) => {
 }
 
 
+
 //* Thunks *//
 export const getAllSpots = () => async (dispatch) => {
     const response = await fetch('/api/spots')
@@ -43,6 +44,7 @@ export const getAllSpots = () => async (dispatch) => {
         const spotsJson = await response.json()
         const normalizedSpots = normalizer(spotsJson.Spots)
         dispatch(loadSpots(normalizedSpots))
+        console.log(spotsJson.Spots)
         return spotsJson.Spots
     }
 }
@@ -82,7 +84,28 @@ export const CreateNewSpot = (spotData) => async (dispatch) => {
     }
 }
 
+//?
+export const EditSpot = (spotData, spotId) => async() => {
+    const updatedSpot = await csrfFetch(`/api/spots/${spotId}`, {
+        method: 'PUT',
+        headers: {
+        "Content-Type": "application/json",
+        },
+        body: JSON.stringify(spotData)
+      }
+      )
 
+    const actualUpdatedSpot = await updatedSpot.json();
+    return actualUpdatedSpot
+  }
+
+//?
+
+export const deleteSpotThunk = (spotId) => async() => {
+    return await csrfFetch(`/api/spots/${spotId}`, {
+        method: 'DELETE'
+    })
+}
 
 
 const initialState = { AllSpots: {}, SpotDetails: {} }
