@@ -5,17 +5,19 @@ import { NavLink, useParams } from "react-router-dom";
 import DeleteSpot from "../DeleteSpot";
 import { useSelector } from "react-redux";
 import selfCheckIn from '../../images/selfCheckIn.png'
+import Reviews from "../ReviewsGetAll";
 
-export default function SpotDetailCard({ spot }) {
+export default function SpotDetailCard({ spot, reviews }) {
     const sessionUser = useSelector(state => state.session.user)
-
-
 
     return (
         <div>
             <div>
                 <div>
                     <h1>{spot.name}</h1>
+                </div>
+                <div>
+                    <Reviews reviews={reviews} spot={spot} />
                 </div>
                 <div>
                     <div>{spot.city}</div>

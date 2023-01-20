@@ -49,6 +49,7 @@ export const getAllSpots = () => async (dispatch) => {
     }
 }
 
+
 //?
 export const getSpotDetails = (spotId) => async (dispatch) => {
     const response = await fetch(`/api/spots/${spotId}`)

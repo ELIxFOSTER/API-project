@@ -27,15 +27,6 @@ export default function NewSpotForm() {
 
     const [errors, setErrors] = useState([])
 
-    const spotData = {
-        address,
-        city,
-        state,
-        country,
-        name,
-        description,
-        price
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -51,7 +42,15 @@ export default function NewSpotForm() {
         }
 
         const previewImage = { url: imageOne, preview: true }
-        let newSpot =  await dispatch(spotsActions.CreateNewSpot(spotData))
+
+        let newSpot =  await dispatch(spotsActions.CreateNewSpot(spotData)).catch(async (res) => {
+            const data = await res.json()
+            if (data && data.errors) {
+                setErrors(data.errors)
+            }
+        })
+
+
         if (newSpot) {
             console.log('PLEASE FKN WORK', newSpot)
             setSpotId(newSpot.id)
@@ -74,6 +73,15 @@ export default function NewSpotForm() {
             <form
             onSubmit={handleSubmit}
             >
+                <ul>
+                {errors.length > 0 ? (
+            errors.map((error, idx) => {
+              return (
+                <li key={idx}>{error}</li>
+              )
+            })
+          ) : ( null )}
+                </ul>
                 <input
                     type='text'
                     value={name}
@@ -121,30 +129,35 @@ export default function NewSpotForm() {
                     value={imageOne}
                     onChange={(e) => setImageOne(e.target.value)}
                     placeholder='Image One Url'
+                    required
                 />
                 <input
                     type='url'
                     value={imageTwo}
                     onChange={(e) => setImageTwo(e.target.value)}
                     placeholder='Image One Url'
+                    required
                 />
                 <input
                     type='url'
                     value={imageThree}
                     onChange={(e) => setImageThree(e.target.value)}
                     placeholder='Image One Url'
+                    required
                 />
                 <input
                     type='url'
                     value={imageFour}
                     onChange={(e) => setImageFour(e.target.value)}
                     placeholder='Image One Url'
+                    required
                 />
                 <input
                     type='url'
                     value={imageFive}
                     onChange={(e) => setImageFive(e.target.value)}
                     placeholder='Image One Url'
+                    required
                 />
                 <textarea
                     type='text'

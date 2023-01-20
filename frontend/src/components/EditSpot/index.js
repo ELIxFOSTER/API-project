@@ -9,7 +9,7 @@ export default function EditSpot() {
     const dispatch = useDispatch()
     const { spotId } = useParams()
 
-    const hisotry = useHistory()
+    const history = useHistory()
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
     const [country, setCountry] = useState('')
@@ -19,6 +19,8 @@ export default function EditSpot() {
     const [lat, setLat] = useState(0)
     const [lng, setLng] = useState(0)
     const [price, setPrice] = useState(0)
+    const [errors, setErrors] = useState([])
+    let errorsArr;
 
 
     useEffect(() => {
@@ -56,9 +58,20 @@ export default function EditSpot() {
             price
         }
 
-        await dispatch(spotsActions.EditSpot(spotData, spotId))
+        const newSpot = await dispatch(spotsActions.EditSpot(spotData, spotId))
+        .catch(async (res) => {
+            const data = await res.json()
+            if (data && data.errors) {
+                setErrors(Object.values(data.errors))
+                console.log('yo this error', errors)
+            } else {
+            }
+        })
 
-        hisotry.push('/listings')
+        if (newSpot) {
+            history.push('/')
+        }
+
     }
 
     if (!Object.values(spot).length) return null
@@ -68,47 +81,63 @@ export default function EditSpot() {
             <form
             onSubmit={handleSubmit}
             >
+                <ul>
+                {errors.length > 0 ? (
+            errors.map((error, idx) => {
+              return (
+                <li key={idx}>{error}</li>
+              )
+            })
+          ) : ( null )}
+                </ul>
                 <input
                     type='text'
                     value={name}
                     onChange={((e) => setName(e.target.value))}
                     placeholder='Name of spot'
+                    required
                 />
                 <input
                     type='text'
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     placeholder='Address'
+                    required
                 />
                 <input
                     type='text'
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     placeholder='City'
+                    requried
                 />
                 <input
                     type='text'
                     value={state}
                     onChange={(e) => setState(e.target.value)}
                     placeholder='State'
+                    required
                 />
                 <input
                     type='text'
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
                     placeholder='Country'
+                    required
                 />
                 <input
                     type='number'
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                     placeholder='Price per night'
+                    required
                 />
                 <textarea
                     type='text'
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder='Description...'
+                    required
                 />
                 <button>Submit</button>
             </form>
