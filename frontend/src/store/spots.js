@@ -42,10 +42,10 @@ export const getAllSpots = () => async (dispatch) => {
 
     if (response.ok) {
         const spotsJson = await response.json()
-        const normalizedSpots = normalizer(spotsJson.Spots)
-        dispatch(loadSpots(normalizedSpots))
-        console.log(spotsJson.Spots)
-        return spotsJson.Spots
+        // const normalizedSpots = normalizer(spotsJson.Spots)
+        dispatch(loadSpots(spotsJson.Spots))
+        // console.log(spotsJson.Spots)
+        // return spotsJson.Spots
     }
 }
 
@@ -72,16 +72,19 @@ export const getCurrentUserSpots = () => async (dispatch) => {
 }
 
 //?
-export const CreateNewSpot = (spotData) => async (dispatch) => {
-    const response = csrfFetch('/api/spots', {
+export const CreateNewSpot = (spotData) => async () => {
+    const response = await csrfFetch('/api/spots', {
         method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            },
         body: JSON.stringify(spotData)
     })
+        if (response.ok) {
+            const newSpotData = await response.json()
+            return newSpotData
+        }
 
-    if (response.ok) {
-        const newSpotData = await response.json()
-        return newSpotData
-    }
 }
 
 //?
@@ -106,6 +109,19 @@ export const deleteSpotThunk = (spotId) => async() => {
         method: 'DELETE'
     })
 }
+
+//?
+export const addSpotImages = (imageObj, spotId) => async(dispatch) => {
+    console.log('thunk', imageObj)
+    const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+        method: 'POST',
+        body: JSON.stringify(imageObj)
+    })
+    const newImage = await response.json()
+    return newImage
+
+}
+
 
 
 const initialState = { AllSpots: {}, SpotDetails: {} }

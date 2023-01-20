@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as spotsActions from "../../store/spots";
+import { useSelector } from "react-redux";
 
 export default function NewSpotForm() {
     const dispatch = useDispatch()
@@ -17,12 +18,28 @@ export default function NewSpotForm() {
     const [spotId, setSpotId] = useState('')
     const [hasSubmit, setHasSubmit] = useState(false)
 
+    const [imageOne, setImageOne] = useState('')
+    const [imageTwo, setImageTwo] = useState('')
+    const [imageThree, setImageThree] = useState('')
+    const [imageFour, setImageFour] = useState('')
+    const [imageFive, setImageFive] = useState('')
+    const imageArr = [imageOne, imageTwo, imageThree, imageFour, imageFive]
+
     const [errors, setErrors] = useState([])
 
-    let newSpot;
+    const spotData = {
+        address,
+        city,
+        state,
+        country,
+        name,
+        description,
+        price
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
         const spotData = {
             address,
             city,
@@ -33,17 +50,26 @@ export default function NewSpotForm() {
             price
         }
 
-        newSpot = await dispatch(spotsActions.CreateNewSpot(spotData))
+        const previewImage = { url: imageOne, preview: true }
+        let newSpot =  await dispatch(spotsActions.CreateNewSpot(spotData))
         if (newSpot) {
+            console.log('PLEASE FKN WORK', newSpot)
             setSpotId(newSpot.id)
+            await dispatch(spotsActions.addSpotImages(previewImage, newSpot.id))
+
+            for (let imageUrl of imageArr) {
+                if (imageUrl) {
+                    const imageObj = { url: imageUrl, preview: false }
+                    await dispatch(spotsActions.addSpotImages(imageObj, newSpot.id))
+                }
+            }
+            await history.push('/listings')
         }
-        history.push('/listings')
     }
 
 
+
     return (
-
-
         <>
             <form
             onSubmit={handleSubmit}
@@ -89,6 +115,36 @@ export default function NewSpotForm() {
                     onChange={(e) => setPrice(e.target.value)}
                     placeholder='Price per night'
                     required
+                />
+                <input
+                    type='url'
+                    value={imageOne}
+                    onChange={(e) => setImageOne(e.target.value)}
+                    placeholder='Image One Url'
+                />
+                <input
+                    type='url'
+                    value={imageTwo}
+                    onChange={(e) => setImageTwo(e.target.value)}
+                    placeholder='Image One Url'
+                />
+                <input
+                    type='url'
+                    value={imageThree}
+                    onChange={(e) => setImageThree(e.target.value)}
+                    placeholder='Image One Url'
+                />
+                <input
+                    type='url'
+                    value={imageFour}
+                    onChange={(e) => setImageFour(e.target.value)}
+                    placeholder='Image One Url'
+                />
+                <input
+                    type='url'
+                    value={imageFive}
+                    onChange={(e) => setImageFive(e.target.value)}
+                    placeholder='Image One Url'
                 />
                 <textarea
                     type='text'

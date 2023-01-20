@@ -20,27 +20,30 @@ export default function EditSpot() {
     const [lng, setLng] = useState(0)
     const [price, setPrice] = useState(0)
 
+
     useEffect(() => {
         dispatch(spotsActions.getSpotDetails(spotId))
     }, [dispatch])
 
     const spot = useSelector((state) => state.spots)
-    console.log('this', spot)
+    // const spotImages = useSelector((state) => state.spots.spotImages)
+    // console.log('yyoooyo', spot.SpotDetails.SpotImages)
 
-    useEffect(() => {
-        setName(spot.name);
-        setCity(spot.city);
-        setState(spot.state);
-        setCountry(spot.country);
-        setAddress(spot.address);
-        // setPrice(spot.price);
-        setDescription(spot.description);
-    }, [spot])
+    // console.log('this', spot)
 
-    let editedSpot;
+    // useEffect(() => {
+    //     setName(spot.name);
+    //     setCity(spot.city);
+    //     setState(spot.state);
+    //     setCountry(spot.country);
+    //     setAddress(spot.address);
+    //     // setPrice(spot.price);
+    //     setDescription(spot.description);
+    // }, [spot])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
         let spotData = {
             address,
             city,
@@ -53,11 +56,13 @@ export default function EditSpot() {
             price
         }
 
-        editedSpot = await dispatch(spotsActions.EditSpot(spotData, spotId))
+        await dispatch(spotsActions.EditSpot(spotData, spotId))
+
         hisotry.push('/listings')
     }
 
     if (!Object.values(spot).length) return null
+
     return (
         <>
             <form

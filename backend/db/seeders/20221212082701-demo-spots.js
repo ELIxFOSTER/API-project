@@ -66,7 +66,7 @@ module.exports = {
         country: "US",
         lat: 99.00501,
         lng: 11.00101,
-        name: "Fifth Sgdsgpot",
+        name: "Fifth Spot",
         description: "Last but not least desc. #5",
         price: 555
       },
@@ -78,7 +78,7 @@ module.exports = {
         country: "US",
         lat: 43.00601,
         lng: 43.02001,
-        name: "Sixgdsth Spot",
+        name: "Sixth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -90,7 +90,7 @@ module.exports = {
         country: "US",
         lat: 43.06001,
         lng: 43.0002251,
-        name: "Sgdsxth Spot",
+        name: "Seventh Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -102,7 +102,7 @@ module.exports = {
         country: "US",
         lat: 43.02001,
         lng: 43.00201,
-        name: "Sixtgdsgh Spot",
+        name: "Eighth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -114,7 +114,7 @@ module.exports = {
         country: "US",
         lat: 43.02001,
         lng: 43.00201,
-        name: "Sixresresth Spot",
+        name: "Ninth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -126,7 +126,7 @@ module.exports = {
         country: "US",
         lat: 43.2001,
         lng: 43.00021,
-        name: "Sixresth Spot",
+        name: "Tenth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -138,7 +138,7 @@ module.exports = {
         country: "US",
         lat: 43.00601,
         lng: 43.05001,
-        name: "Sixtgsdg Spot",
+        name: "Eleventh Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -150,7 +150,7 @@ module.exports = {
         country: "US",
         lat: 43.006201,
         lng: 43.5260001,
-        name: "Si43wxth Spot",
+        name: "Twelfth Spot ",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -162,7 +162,7 @@ module.exports = {
         country: "US",
         lat: 43.004201,
         lng: 43.0054201,
-        name: "Sixttewh Spot",
+        name: "Thirteenth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -174,7 +174,7 @@ module.exports = {
         country: "US",
         lat: 43.0053201,
         lng: 43.0532001,
-        name: "Sirqrqtxth Spot",
+        name: "Fourteenth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -186,7 +186,7 @@ module.exports = {
         country: "US",
         lat: 43.525,
         lng: 43.014001,
-        name: "Sixth qrqrSpot",
+        name: "Fifteenth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -198,7 +198,7 @@ module.exports = {
         country: "US",
         lat: 43.010201,
         lng: 43.00201,
-        name: "Sixtrqrh Spot",
+        name: "Sixteenth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -210,7 +210,7 @@ module.exports = {
         country: "US",
         lat: 43.50001,
         lng: 43.00601,
-        name: "Sixtrqh Spot",
+        name: "Seventeenth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -222,7 +222,7 @@ module.exports = {
         country: "US",
         lat: 43.00201,
         lng: 43.00201,
-        name: "Sixetrqh Spot",
+        name: "Eighteenth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -234,7 +234,7 @@ module.exports = {
         country: "US",
         lat: 43.00401,
         lng: 43.00501,
-        name: "Siexth qSpot",
+        name: "Nineteenth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
@@ -246,7 +246,7 @@ module.exports = {
         country: "US",
         lat: 413.0001,
         lng: 433.0001,
-        name: "Sixtrqeh Spot",
+        name: "Twentieth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },

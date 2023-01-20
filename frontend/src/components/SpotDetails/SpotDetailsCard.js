@@ -9,6 +9,8 @@ import selfCheckIn from '../../images/selfCheckIn.png'
 export default function SpotDetailCard({ spot }) {
     const sessionUser = useSelector(state => state.session.user)
 
+
+
     return (
         <div>
             <div>
