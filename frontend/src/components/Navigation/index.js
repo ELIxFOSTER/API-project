@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import CreateSpot from "../CreateSpot";
-import logo from '../../images/logo.png'
+import navlogo from '../../images/navlogo.png'
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -16,7 +16,7 @@ function Navigation({ isLoaded }) {
         <div className="navbar-contents">
           <NavLink exact to="/">
             <div className="navbar-home-logo">
-              <img src={logo} className="logo"  />
+              <img src={navlogo} className="logo"  />
             </div>
           </NavLink>
           <div className="navbar-button-container">
