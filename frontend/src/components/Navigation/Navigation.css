@@ -8,10 +8,12 @@
 
 .logo {
   position: relative;
+  object-fit: cover;
   /* border: 2px solid red; */
   /* border: 2px solid black; */
-  left: 100px;
-  top: 5px
+  width: 114px;
+  left: 114px;
+  top: 17px
 }
 
 /* .navbar-home-logo {
