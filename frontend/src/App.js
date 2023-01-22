@@ -29,7 +29,7 @@ function App() {
       </Route>
 
       <Route exact path={'/spots/:spotId'} >
-        <Navigation isLoaded={isLoaded} />
+      <Navigation isLoaded={isLoaded} />
         <SpotDetails />
       </Route>
 

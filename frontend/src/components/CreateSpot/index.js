@@ -4,6 +4,12 @@ import { NavLink } from "react-router-dom";
 
 export default function CreateSpot({ user }) {
   return (
-    <h3>airStay your home</h3>
+    <>
+    <NavLink to='/hosting/home'
+    style={{ textDecoration: "none", color: "black" }}
+    >
+      <span>Instabnb your home</span>
+      </NavLink>
+    </>
   );
 }

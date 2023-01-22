@@ -19,6 +19,7 @@ export default function ReviewEditForm({ userReview, spotById }) {
 
     const refresh = async () => {
         console.log('ayooo', spotById)
+        await dispatch(getSpotDetails(spotById.id))
         await dispatch(getReviews(spotById.id))
     }
 

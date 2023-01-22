@@ -22,6 +22,7 @@ export default function ReviewCreateForm({ spot }) {
     const refresh = async () => {
         // await dispatch(getSpotDetails(spotId))
         await dispatch(getReviews(spot.id))
+        await dispatch(getSpotDetails(spot.id))
     }
 
 
