@@ -56,11 +56,13 @@ export default function NewSpotForm() {
     if (newSpot) {
       console.log("PLEASE FKN WORK", newSpot);
       setSpotId(newSpot.id);
+      console.log('preview image', previewImage)
       await dispatch(spotsActions.addSpotImages(previewImage, newSpot.id));
 
       for (let imageUrl of imageArr) {
-        if (imageUrl) {
+        if (imageUrl !== previewImage.url) {
           const imageObj = { url: imageUrl, preview: false };
+          console.log('false images', imageUrl)
           await dispatch(spotsActions.addSpotImages(imageObj, newSpot.id));
         }
       }
@@ -74,7 +76,7 @@ export default function NewSpotForm() {
         <div className="page-content-container">
           <div className='detail-box'>
             <div className='welcome-text-box'>
-            <h1>Welcome, {sessionUser.firstName} </h1>
+            <h1>Welcome, {sessionUser.username} </h1>
             <h4 id='this'>Please enter valid information and provide all image urls</h4>
             </div>
           </div>

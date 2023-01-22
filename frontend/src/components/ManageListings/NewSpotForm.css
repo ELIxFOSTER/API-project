@@ -47,6 +47,11 @@
 
 }
 
+.welcome-text-box > h4 {
+    color: rgb(63, 63, 63);
+    font-weight: 300;
+}
+
 .form-box {
     align-items: center;
     display: flex;

@@ -11,7 +11,7 @@ import "./SpotDetails.css";
 export default function SpotDetailsCard({ spot, reviews }) {
   const sessionUser = useSelector((state) => state.session.user);
 
-
+  const editRoute = 'edit'
 
   console.log("yoo", spot);
   let previewImageUrl;
@@ -55,7 +55,7 @@ export default function SpotDetailsCard({ spot, reviews }) {
                 <>
                   <div className="edit-button-container">
                     <NavLink
-                      to={`/edit-spot/${spot.id}`}
+                      to={`/${editRoute}/${spot.id}`}
                       style={{ textDecoration: "none", color: "black" }}
                     >
                       <i class="fa-regular fa-pen-to-square" id="edit"></i>

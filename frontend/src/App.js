@@ -8,6 +8,7 @@ import SpotDetails from "./components/SpotDetails";
 import ManageListings from "./components/ManageListings";
 import NewSpotForm from "./components/ManageListings/form";
 import EditSpot from "./components/EditSpot";
+import NavigationSmall from "./components/NavigationSmall";
 
 
 
@@ -29,7 +30,7 @@ function App() {
       </Route>
 
       <Route exact path={'/spots/:spotId'} >
-      <Navigation isLoaded={isLoaded} />
+      <NavigationSmall isLoaded={isLoaded} />
         <SpotDetails />
       </Route>
 
@@ -39,7 +40,7 @@ function App() {
       </Route>
 
       <Route exact path={`/:listings`} >
-        <Navigation isLoaded={isLoaded} />
+        <NavigationSmall isLoaded={isLoaded} />
         <ManageListings />
       </Route>
 
@@ -47,7 +48,8 @@ function App() {
         <NewSpotForm />
       </Route>
 
-      <Route exact path={'/edit-spot/:spotId'} >
+      <Route exact path={'/:edit/:spotId'} >
+        <Navigation isLoaded={isLoaded}/>
         <EditSpot />
       </Route>
 

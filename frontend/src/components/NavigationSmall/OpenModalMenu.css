@@ -1,0 +1,9 @@
+.popout-button {
+    transition: 0.2s;
+    font-size: 15px;
+}
+
+.popout-button:hover {
+    background-color: rgb(238, 238, 238);
+    cursor: pointer;
+}

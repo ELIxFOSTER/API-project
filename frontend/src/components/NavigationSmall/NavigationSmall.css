@@ -7,13 +7,13 @@
   display: none;
 }
 
-.logo {
+.small-logo {
   position: relative;
   object-fit: cover;
   /* border: 2px solid red; */
   /* border: 2px solid black; */
   width: 114px;
-  left: 80px;
+  left:305px;
   top: 17px
 }
 
@@ -22,7 +22,7 @@
   width: 50px
 } */
 
-.navbar-profile-button {
+.small-navbar-profile-button {
   /* border: 2px solid orange; */
   display: flex;
   align-items: center;
@@ -32,19 +32,19 @@
   /* top: 5px */
 }
 
-.navbar-button-container {
+.small-navbar-button-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  right: 85px;
+  right: 310px;
   top: 10px;
   /* border: 2px solid red; */
-  width: 300px;
+  width: 245px;
   height: 60px
 }
 
-.navbar-create-button {
+.small-navbar-create-button {
   /* border: 2px solid purple; */
   position: relative;
   display: flex;
@@ -54,28 +54,28 @@
   left: 50px;
   /* top: 5px; */
   /* right: 135px; */
-  font-size: 14px;
+  /* font-size: 14px; */
   font-weight: 450;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;;
 }
 
-/* #instabnb-button {
+#instabnb-button {
   font-weight: normal;
-} */
+}
 
 
-.navbar-container {
+.small-navbar-container {
   width: auto;
 }
 
-.navbar-contents {
+.small-navbar-contents {
   display: flex;
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.navbar-wrapper {
+.small-navbar-wrapper {
   border-bottom: 1px solid rgb(232, 229, 229);
   box-shadow: 10px;
   width: 100%;
