@@ -1,0 +1,10 @@
+.listing-page-wrapper {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    position: relative;
+    margin: 140px
+}

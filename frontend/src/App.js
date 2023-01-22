@@ -33,11 +33,12 @@ function App() {
         <SpotDetails />
       </Route>
 
-      <Route exact path={'/hosting/home'} >
+      <Route exact path={'/:hosting/home'} >
+        <Navigation isLoaded={isLoaded} />
         <NewSpotForm />
       </Route>
 
-      <Route exact path={`/listings`} >
+      <Route exact path={`/:listings`} >
         <Navigation isLoaded={isLoaded} />
         <ManageListings />
       </Route>

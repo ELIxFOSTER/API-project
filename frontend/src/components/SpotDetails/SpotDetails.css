@@ -269,8 +269,8 @@
 .badge-wrapper {
     /* border: 2px solid black; */
     margin-top: 35px;
-    padding-bottom: 35px;
-    border-bottom: 1px solid rgb(232, 229, 229);
+    /* padding-bottom: 35px; */
+    /* border-bottom: 1px solid rgb(232, 229, 229); */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -356,11 +356,23 @@
     align-items: center;
 }
 
+.checkin-text-box {
+    color: grey;
+    font-weight: 300;
+}
+
+.superhost-text-box {
+    color: grey;
+    font-weight: 300;
+}
+
 
 
 /** main aircover wrapper **/
 .aircover-wrapper {
     /* border: 1px solid black; */
+    border-top: 1px solid rgb(232, 229, 229);
+    padding-top: 35px;
     margin-top: 35px;
     display: flex;
     flex-direction: column;

@@ -14,6 +14,8 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
+  const listingsRoute = 'listings'
+
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -70,7 +72,7 @@ function ProfileButton({ user }) {
               <button onClick={logout}>Log Out</button>
             </li>
             <li>
-              <NavLink to={`/listings`}>
+              <NavLink to={`/${listingsRoute}`}>
                 <ListingsButton />
               </NavLink>
             </li>

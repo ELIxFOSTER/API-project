@@ -6,9 +6,11 @@ import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import CreateSpot from "../CreateSpot";
 import navlogo from "../../images/navlogo.png";
+import { useParams } from "react-router-dom";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+  const { hosting } = useParams();
 
   return (
     <div className="navbar-wrapper">
@@ -20,16 +22,20 @@ function Navigation({ isLoaded }) {
             </div>
           </NavLink>
           <div className="navbar-button-container">
-            {sessionUser ? (
+            {sessionUser && !hosting ? (
               <div className="navbar-create-button">
-                  <CreateSpot user={sessionUser} />
+                <CreateSpot user={sessionUser} />
               </div>
             ) : null}
-            {isLoaded && (
-              <div className="navbar-profile-button">
-                <ProfileButton user={sessionUser} />
-              </div>
-            )}
+            {!hosting ? (
+              <>
+                {isLoaded && (
+                  <div className="navbar-profile-button">
+                    <ProfileButton user={sessionUser} />
+                  </div>
+                )}
+              </>
+            ) : null}
           </div>
         </div>
       </div>
