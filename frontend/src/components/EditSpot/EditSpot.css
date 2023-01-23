@@ -45,3 +45,11 @@
     border-radius: 10px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
+
+.edit-submit-button-fixed {
+    padding: 15px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: rgb(244, 60, 94);
+    color: white;
+}

@@ -83,3 +83,11 @@
     height: 100px;
     width: 200px;
 }
+
+.create-submit-button {
+    padding: 15px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: rgb(244, 60, 94);
+    color: white;
+}

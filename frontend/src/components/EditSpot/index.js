@@ -59,7 +59,7 @@ export default function EditSpot() {
       price,
     };
 
-    if (price <= 0) alert('Price must be greater than 0')
+    // if (price <= 0) alert('Price must be greater than 0')
 
     const newSpot = await dispatch(
       spotsActions.EditSpot(spotData, spotId)
@@ -91,18 +91,6 @@ export default function EditSpot() {
           </div>
           <div className="edit-form-box">
             <form onSubmit={handleSubmit} className="edit-form">
-              {errors.length > 0
-                ? errors.map((error, idx) => {
-                    return <li key={idx}>{error}</li>;
-                  })
-                : null}
-              {errors.length > 0 ? (
-                <ul>
-                  {errors.map((error, idx) => {
-                    return <li key={idx}>{error}</li>;
-                  })}
-                </ul>
-              ) : null}
               <input
                 type="text"
                 value={name}
@@ -152,7 +140,14 @@ export default function EditSpot() {
                 placeholder="Description..."
                 required
               />
-              <button>Submit</button>
+              <ul className='errors-ul'>
+              {errors.length > 0 && hasSubmitted
+              ? errors.map((error, idx) => {
+                  return <li key={idx}>{error}</li>;
+                })
+              : null}
+              </ul>
+              <button className='edit-submit-button-fixed'>Submit</button>
             </form>
           </div>
         </div>

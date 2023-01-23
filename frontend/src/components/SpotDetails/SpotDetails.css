@@ -110,7 +110,9 @@
 }
 
 
-
+.delete-button-container:hover {
+    cursor: pointer;
+}
 
 
 #dot-3 {

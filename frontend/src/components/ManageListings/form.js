@@ -25,9 +25,11 @@ export default function NewSpotForm() {
   const [imageThree, setImageThree] = useState("");
   const [imageFour, setImageFour] = useState("");
   const [imageFive, setImageFive] = useState("");
-  const imageArr = [imageOne, imageTwo, imageThree, imageFour, imageFive];
+  const imageArr = [imageTwo, imageThree, imageFour, imageFive];
 
   const [errors, setErrors] = useState([]);
+
+  let flag = false
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +44,9 @@ export default function NewSpotForm() {
       price,
     };
 
+    if (price <= 0) {
+      flag = true
+    }
     const previewImage = { url: imageOne, preview: true };
 
 
@@ -61,11 +66,9 @@ export default function NewSpotForm() {
       await dispatch(spotsActions.addSpotImages(previewImage, newSpot.id));
 
       for (let imageUrl of imageArr) {
-        if (imageUrl !== previewImage.url) {
           const imageObj = { url: imageUrl, preview: false };
           console.log('false images', imageUrl)
           await dispatch(spotsActions.addSpotImages(imageObj, newSpot.id));
-        }
       }
       await history.push("/listings");
     }
@@ -179,7 +182,7 @@ export default function NewSpotForm() {
             {/* {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))} */}
-            {price <= 0 ? (<li>Price must be greater than 0</li>) : (null)}
+            {flag ? (<li>Price must be greater than 0</li>) : (null)}
               <button className='create-submit-button' >Create</button>
             </form>
           </div>
