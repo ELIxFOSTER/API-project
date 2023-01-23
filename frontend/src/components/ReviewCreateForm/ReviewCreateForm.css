@@ -1,4 +1,4 @@
-.login-form-wrapper {
+.review-form-wrapper {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -14,7 +14,7 @@
     background-color: white;
 }
 
-.login-top-bar-container {
+.review-top-bar-container {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -23,20 +23,25 @@
     border-bottom: 1px solid rgb(213, 209, 209);
 }
 
-.login-x-icon-box {
+.review-x-icon-box {
     position: relative;
     right: 225px
 }
 
-.x-icon:hover {
+#review-x-icon {
+    position: relative;
+    left: 45px
+}
+
+#review-x-icon:hover {
     cursor: pointer;
 }
 
-.login-title-box {
+.review-title-box {
 
 }
 
-.welcome-login-form-box {
+.review-question-form-box {
     display: flex;
     flex-direction: column;
     padding-left: 30px;
@@ -44,29 +49,23 @@
     padding-top: 30px;
 }
 
-.welcome-login-box {
+.review-box {
 
 }
 
-.login-form-box {
+.review-form-box {
     display: flex;
     flex-direction: column;
 }
 
-.login-form {
+.review-form {
     display: flex;
     flex-direction: column;
     /* border: 2px solid red */
     gap: 9px
 }
 
-.login-form > input {
-    border: 1px solid rgb(160, 154, 154);
-    padding: 15px;
-    border-radius: 15px;
-}
-
-.login-form > button {
+.review-form > button {
     padding: 15px;
     border-radius: 10px;
     border: 0px;
@@ -74,6 +73,19 @@
     color: white;
 }
 
-.error-ul > li {
+.review-form > input, textarea {
+    border: 1px solid rgb(160, 154, 154);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-form > textarea:placeholder {
+text-align: center;
+transform: translateY(150px);
+}
+
+.errors-ul {
     color: red
 }

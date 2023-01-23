@@ -19,19 +19,19 @@ module.exports = {
         },
         { spotId: 1,
           url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-48538355/original/5de6456d-fe80-4324-901d-30f4de0f7133.jpeg?im_w=720',
-          preview: true
+          preview: false
         },
         { spotId: 1,
           url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-48538355/original/e157cce9-0993-491b-9729-1d7b05f55ba9.jpeg?im_w=720',
-          preview: true
+          preview: false
         },
         { spotId: 1,
           url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-48538355/original/271b7703-6c34-45bf-8f99-079306b9c258.jpeg?im_w=720',
-          preview: true
+          preview: false
         },
         { spotId: 1,
           url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-48538355/original/7e88e2ff-0b92-48c1-891e-278344cfdf40.jpeg?im_w=720',
-          preview: true
+          preview: false
         },
         {
           spotId: 2,

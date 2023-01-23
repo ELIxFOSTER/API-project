@@ -1,0 +1,122 @@
+/** main review wrapper **/
+.all-reviews-container {
+    /* border: 5px solid red; */
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 25px;
+    margin-bottom: 100px;
+    gap: 30px
+}
+
+/** review selectors **/
+.review-wrapper {
+    /* border: 2px solid black; */
+    display: flex;
+    flex-direction: column;
+    width: 450px
+}
+
+.review-top-container {
+    /* border: 2px solid green; */
+    display: flex
+}
+
+.profile-icon-box {
+    /* border: 2px solid orange; */
+    display: flex;
+    align-items: center;
+}
+
+.name-date-container {
+    /* border: 2px solid purple; */
+    display: flex;
+    flex-direction: column;
+    /* gap: 2px */
+
+}
+
+.review-name-box {
+    /* border: 2px solid red */
+}
+
+.review-date-box {
+    /* border: 2px solid blue */
+}
+
+.review-bottom-container {
+    /* border: 2px solid brown */
+}
+
+.review-text-box {
+    /* border: 2px solid grey; */
+    display: flex;
+    padding-top: 14px;
+    width: 90%
+}
+
+.reviews-title-container > span {
+    /* border: 3px solid purple; */
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.reviews-title-container {
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 25px
+}
+
+.reviews-title-wrapper {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+.create-reviews-button-container {
+    /* border: 2px solid black */
+}
+
+
+
+#review-dot {
+    font-size: 4px;
+    padding-top: 6px;
+}
+
+#review-profile-icon {
+    font-size: 40px;
+    padding-right: 8px
+}
+
+
+/** main edit and delete wrapper **/
+.edit-delete-container {
+    /* border: 2px solid red; */
+    display: flex;
+    height: 25px;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    left: 50px
+}
+
+.edit-modal-button-box {
+    /* border: 2px solid black */
+    font-size: 12px;
+}
+
+
+.delete-button-box {
+    /* border: 2px solid black; */
+    font-size: 15px;
+}
+
+.delete-button-box:hover {
+    cursor: pointer;
+}

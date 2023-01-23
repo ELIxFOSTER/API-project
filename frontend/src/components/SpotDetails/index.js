@@ -6,7 +6,7 @@ import { getSpotDetails } from '../../store/spots'
 import { useHistory } from 'react-router-dom'
 import SpotImages from './SpotImages'
 import { deleteSpotThunk } from '../../store/spots'
-import SpotDetailCard from './SpotDetailsCard'
+import SpotDetailsCard from './SpotDetailsCard'
 import { getReviews } from '../../store/reviews'
 
 
@@ -17,9 +17,7 @@ export default function SpotDetails() {
     const spot = useSelector((state) => state.spots.SpotDetails)
     const sessionUser = useSelector(state => state.session.user)
     const reviews = useSelector((state) => state.reviews.allReviews)
-    // console.log('spot', spot)
-    // console.log('sessionUser', sessionUser)
-    console.log('here', reviews)
+
 
     useEffect(() => {
         dispatch(getSpotDetails(spotId))
@@ -33,7 +31,7 @@ export default function SpotDetails() {
 
     return (
         <>
-            <SpotDetailCard spot={spot} reviews={reviews}/>
+            <SpotDetailsCard spot={spot} reviews={reviews}/>
         </>
     )
 }

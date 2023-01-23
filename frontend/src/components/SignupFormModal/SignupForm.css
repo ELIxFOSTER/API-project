@@ -1,0 +1,82 @@
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red */
+    gap: 9px
+}
+
+.signup-form > input {
+    border: 1px solid rgb(160, 154, 154);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.signup-form > button {
+    padding: 15px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: rgb(244, 60, 94);
+    color: white;
+}
+
+
+.signup-form-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-title-box {
+    /* border-bottom: 1px solid rgb(232, 229, 229); */
+    /* border: 2px solid purple */
+}
+
+.x-icon-box {
+    /* border: 2px solid purple; */
+    position: relative;
+    right: 225px
+}
+
+#x-icon:hover {
+    cursor: pointer;
+}
+
+.top-bar-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    /* border: 2px solid red; */
+    border-bottom: 1px solid rgb(213, 209, 209);
+}
+
+
+.signup-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    border-radius: 15px;
+    width: 550px;
+    height: 750px;
+    top: 120px;
+    right: 34%;
+    /* padding-top: 30px; */
+    /* padding-right: 30px; */
+    /* padding-left: 30px; */
+    border: 1px solid rgb(160, 154, 154);
+    background-color: white;
+
+}
+
+
+.welcome-box {
+    /* border-top: 1px solid black; */
+    /* border: 2px solid red */
+}
+
+.welcome-and-form-box {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+}

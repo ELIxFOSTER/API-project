@@ -5,33 +5,38 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import CreateSpot from "../CreateSpot";
-import logo from '../../images/logo.png'
+import navlogo from "../../images/navlogo.png";
+import { useParams } from "react-router-dom";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+  const { hosting } = useParams();
+  const { edit } = useParams()
 
   return (
     <div className="navbar-wrapper">
-      <div className='navbar-container'>
+      <div className="navbar-container">
         <div className="navbar-contents">
           <NavLink exact to="/">
             <div className="navbar-home-logo">
-              <img src={logo} className="logo"  />
+              <img src={navlogo} className="logo" />
             </div>
           </NavLink>
           <div className="navbar-button-container">
-          {sessionUser ? (
+            {sessionUser ? (
               <div className="navbar-create-button">
-                <NavLink to="/hosting/home">
-                  <CreateSpot user={sessionUser} />
-                </NavLink>
+                <CreateSpot user={sessionUser} />
               </div>
-            ) : null}
-            {isLoaded && (
-              <div className='navbar-profile-button'>
-                <ProfileButton user={sessionUser} />
-              </div>
-            )}
+            ) : (null)}
+            {!hosting ? (
+              <>
+                {isLoaded && (
+                  <div className="navbar-profile-button">
+                    <ProfileButton user={sessionUser} />
+                  </div>
+                )}
+              </>
+            ) : (null)}
           </div>
         </div>
       </div>

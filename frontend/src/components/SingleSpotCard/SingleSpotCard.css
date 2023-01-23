@@ -54,3 +54,38 @@ span {
 .star-icon {
     object-fit: contain;
 }
+
+.live-text {
+    font-size: 14px;
+}
+
+
+.live-container {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px
+}
+
+#live-dot {
+    font-size: 7px;
+    color: green
+}
+
+.spot-image-container {
+    position: relative;
+}
+
+#card-star {
+    font-size: 9px
+}
+
+.side-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1px
+}

@@ -1,4 +1,4 @@
-.login-form-wrapper {
+.review-edit-wrapper {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -14,7 +14,7 @@
     background-color: white;
 }
 
-.login-top-bar-container {
+.review-edit-top-bar-container {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -23,20 +23,18 @@
     border-bottom: 1px solid rgb(213, 209, 209);
 }
 
-.login-x-icon-box {
+.review-edit-x-icon-box {
     position: relative;
     right: 225px
 }
 
-.x-icon:hover {
-    cursor: pointer;
+.review-edit-box {
+    display: flex;
+    position: relative;
+    left: 30px
 }
 
-.login-title-box {
-
-}
-
-.welcome-login-form-box {
+.review-edit-form-box {
     display: flex;
     flex-direction: column;
     padding-left: 30px;
@@ -44,29 +42,14 @@
     padding-top: 30px;
 }
 
-.welcome-login-box {
-
-}
-
-.login-form-box {
-    display: flex;
-    flex-direction: column;
-}
-
-.login-form {
+.review-edit-form {
     display: flex;
     flex-direction: column;
     /* border: 2px solid red */
     gap: 9px
 }
 
-.login-form > input {
-    border: 1px solid rgb(160, 154, 154);
-    padding: 15px;
-    border-radius: 15px;
-}
-
-.login-form > button {
+.review-edit-form > button {
     padding: 15px;
     border-radius: 10px;
     border: 0px;
@@ -74,6 +57,10 @@
     color: white;
 }
 
-.error-ul > li {
-    color: red
+.review-edit-form > input, textarea {
+    border: 1px solid rgb(160, 154, 154);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
 }

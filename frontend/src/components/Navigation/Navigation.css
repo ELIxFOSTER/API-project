@@ -1,5 +1,82 @@
 .profile-dropdown {
-  position: absolute;
+  position: fixed;
+  background-color: white;
+  border: 1px solid rgb(225, 222, 222);
+    box-shadow: 5px 5px 5px 0px rgb(0.15, 0.15, 0.15, 0.15);
+    border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  /* width: 200px; */
+  /* height: 160px; */
+  align-items: center;
+  justify-content: space-between;
+  right: 85px;
+  top: 65px
+}
+
+#dropdown-firstname {
+  position: relative;
+  left: 10px
+}
+
+#dropdown-listings {
+  position: relative;
+  left: 10px
+}
+
+#dropdown-logout {
+  position: relative;
+  left: 10px;
+}
+
+#dropdown-username {
+  position: relative;
+  left: 10px
+}
+
+#logout-button {
+  width: 130px;
+  background-color: transparent;
+  border: 0;
+  text-align: left;
+}
+
+.dropdown-content {
+  margin: 10px;
+  /* border: 1px solid purple; */
+  display: flex;
+  width: 96%;
+  margin-right: 10px;
+  align-items: center;
+  right: 10px;
+  padding: 3px
+}
+
+#logout-span {
+  font-size: 16px;
+
+}
+
+
+#logout-dropdown-button:hover {
+  background-color: rgb(238, 238, 238);
+    cursor: pointer;
+}
+
+#dropdown-listings-button:hover {
+  background-color: rgb(238, 238, 238);
+    cursor: pointer;
+}
+
+
+.dropdown-content > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popout-box:hover {
+  background-color: rgb(238, 238, 238);
 }
 
 .hidden {
@@ -12,7 +89,7 @@
   /* border: 2px solid red; */
   /* border: 2px solid black; */
   width: 114px;
-  left: 114px;
+  left: 80px;
   top: 17px
 }
 
@@ -25,22 +102,45 @@
   /* border: 2px solid orange; */
   display: flex;
   align-items: center;
+  /* justify-content: flex-end; */
   border-radius: 10px;
   position: relative;
-  right: 100px;
-  top: 5px
+  /* right: 100px; */
+  /* top: 5px */
 }
 
 .navbar-button-container {
   display: flex;
-  /* justify-content: center; */
-  right: 100px;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  right: 85px;
+  top: 10px;
   /* border: 2px solid red; */
+  width: 300px;
+  height: 60px
 }
 
 .navbar-create-button {
-  border: 2px solid purple;
+  /* border: 2px solid purple; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  right: 10px;
+  left: px;
+  /* top: 5px; */
+  /* right: 135px; */
+  font-size: 14px;
+  font-weight: 450;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;;
 }
+
+/* #instabnb-button {
+  font-weight: normal;
+} */
+
 
 .navbar-container {
   width: auto;
@@ -57,9 +157,9 @@
   border-bottom: 1px solid rgb(232, 229, 229);
   box-shadow: 10px;
   width: 100%;
-  height: 80px;
-  z-index: 9;
+  height: 79px;
   position: fixed;
   background-color: white;
   top: 0px;
+  z-index: 10
 }

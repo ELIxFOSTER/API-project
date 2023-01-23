@@ -13,8 +13,20 @@ module.exports = {
       {
         spotId: 1,
         userId: 1,
-        review: "Review 01",
+        review: "The place is beautiful and the indoor pool area was outstanding.",
         stars: 4.5
+      },
+      {
+        spotId: 1,
+        userId: 2,
+        review: "Nice quite location, very nice",
+        stars: 4.5
+      },
+      {
+        spotId: 1,
+        userId: 3,
+        review: "Audrey did a fantastic job at answering any questions I had before and during our stay. ",
+        stars: 1
       },
       {
         spotId: 5,

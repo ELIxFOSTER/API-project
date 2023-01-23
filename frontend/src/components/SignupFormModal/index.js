@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import * as sessionActions from "../../store/session";
-import './SignupForm.css';
+import "./SignupForm.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
@@ -13,101 +14,117 @@ function SignupFormModal() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const [hasSubmitted, setHasSubmitted] = useState(false)
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const { closeModal } = useModal();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setHasSubmitted(true)
+    setHasSubmitted(true);
 
-    if (password !== confirmPassword) return setErrors({ confirmPassword: 'Passwords do not match'})
+    if (password !== confirmPassword)
+      return setErrors({ confirmPassword: "Passwords do not match" });
 
-    setErrors({})
+    setErrors([]);
     const singupData = {
       firstName,
       lastName,
       email,
       username,
-      password
-    }
+      password,
+    };
 
     return dispatch(sessionActions.signup(singupData))
-    .then(closeModal)
-    .catch(async (res) => {
-      const data = await res.json()
-      if (data && data.errors) setErrors(data.errors)
-    })
+      .then(closeModal)
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
   };
-
 
   return (
     <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.firstName ? errors.firstName : null}
-          {errors.lastName ? errors.lastName : null}
-          {errors.username ? errors.username : null}
-          {errors.password ? errors.password : null}
-          {errors.confirmPassword ? errors.confirmPassword : null}
-          {errors.email ? errors.email : null}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Username
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          First Name
-          <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Last Name
-          <input
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Confirm Password
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
+      <div className="signup-form-wrapper">
+        <div className="top-bar-container">
+          <div className="x-icon-box">
+              <i onClick={closeModal} class="fa-solid fa-x" id='x-icon'></i>
+          </div>
+          <div className="signup-title-box">
+            <h4>Signup</h4>
+          </div>
+        </div>
+        <div className="welcome-and-form-box">
+          <div className="welcome-box">
+            <h1>Welcome to Instabnb</h1>
+          </div>
+          <div className="signup-form-box">
+            <form onSubmit={handleSubmit} className="signup-form">
+              {/* <ul>
+            {errors.firstName ? errors.firstName : null}
+            {errors.lastName ? errors.lastName : null}
+            {errors.username ? errors.username : null}
+            {errors.password ? errors.password : null}
+            {errors.confirmPassword ? errors.confirmPassword : null}
+            {errors.email ? errors.email : null}
+          </ul> */}
+
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Username"
+                required
+              />
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="First Name"
+                required
+              />
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="Last Name"
+                required
+              />
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Email"
+              />
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                required
+              />
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Confirm Password"
+                required
+              />
+              <ul className='errors-ul'>
+                {errors.firstName ? <li>{errors.firstName}</li> : null}
+                {errors.lastName ? <li>{errors.lastName}</li> : null}
+                {errors.username ? <li>{errors.username}</li> : null}
+                {errors.password ? <li>{errors.password}</li> : null}
+                {errors.confirmPassword ? (
+                  <li>{errors.confirmPassword}</li>
+                ) : null}
+                {errors.email ? <li>{errors.email}</li> : null}
+              </ul>
+
+              <button type="submit">Continue</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

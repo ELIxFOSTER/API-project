@@ -1,0 +1,426 @@
+.title-container {
+    /* border: 2px solid red; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.details-page-wrapper {
+    /* border: 2px solid black; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    top: 75px;
+}
+
+.spot-name {
+    font-size: 26px;
+    font-weight: 600;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+.sub-title-wrapper {
+    display: flex;
+    /* border: 2px solid orange; */
+    position: relative;
+    bottom: 8px;
+    justify-content: space-between;
+}
+
+.sub-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 2px solid green; */
+    width: auto;
+}
+
+.sub-title-avgrating {
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.edit-delete-wrapper {
+    /* border: 2px solid purple; */
+    display: flex;
+    justify-content: space-between;
+    width: 130px
+}
+
+.edit-button-container {
+    /* border: 2px solid pink; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.images-container {
+    display: flex;
+    width: auto;
+    height: auto;
+    position: relative;
+    justify-content: center;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    gap: 6px;
+    /* border: 2px solid red; */
+}
+
+.preview-image-container {
+    height: auto;
+    width: auto;
+    /* border: 1px solid red; */
+}
+
+.sub-title-reviews {
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+
+.sub-title-superhost {
+    font-size: 14px;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    font-weight: 400;
+    color: rgb(34, 34, 34);
+}
+
+.sub-title-location {
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+#dot-1 {
+    padding: 3px;
+    font-size: 2px;
+}
+
+#dot-2 {
+    padding-left: 11px;
+    padding-right: 7px;
+    position: relative;
+    top: 3px;
+    font-size: 2px;
+}
+
+
+
+#dot-3 {
+    position: relative;
+    top: 3px;
+    padding: 10px;
+    font-size: 2px;
+}
+
+
+#star {
+    font-size: 13px;
+    padding-right: 3px;
+}
+
+#medal {
+    padding-right: 8px;
+}
+
+#edit {
+    font-size: 14px;
+    padding-right: 7px;
+}
+
+.edit-button {
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;;
+    font-size: 14px;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+#delete {
+    font-size: 14px;
+    padding-right: 7px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.other-images-container {
+    /* border: 1px solid purple; */
+    --gap: 8px;
+    --num-cols: 4;
+    --row-height: 260px;
+    box-sizing: border-box;
+    padding-top: 15px;
+    /* padding: var(--gap); */
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    grid-auto-rows: var(--row-height);
+    gap: var(--gap)
+}
+
+.other-images-container > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.other-images-container-col-2 {
+    grid-column: span 2;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.other-images-container-row-2 {
+    grid-row: span 2;
+}
+
+.other-image-2 {
+    border-radius: 0px 10px 0px 0px;
+}
+
+.other-image-4 {
+    border-radius: 0px 0px 10px 0px;
+}
+
+
+
+
+
+.house-specs-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 2px solid green; */
+    width: 330px;
+    align-items: center;
+}
+
+.house-specs-container > i {
+    font-size: 2px;
+}
+
+.house-specs-container > span {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;;
+}
+
+.hosted-by-wrapper {
+    /* border: 2px solid red; */
+     display: flex;
+    /* flex-direction: column; */
+    border-bottom: 1px solid rgb(232, 229, 229);
+
+    /* justify-content: space-between;  */
+    height: 100px;
+    width: 58%;
+    padding-top: 25px;
+    padding-bottom: 4px
+}
+
+.hosted-by-fit-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+
+.hosted-by-title {
+    font-size: 22px;
+    font-weight: 600;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+
+
+
+
+
+
+
+#handshake {
+    font-size: 23px;
+}
+
+#door {
+    font-size: 25px;
+    position: relative;
+    top: 2px
+}
+
+#calendar {
+    font-size: 30px;
+}
+
+
+/** main badge wrapper **/
+.badge-wrapper {
+    /* border: 2px solid black; */
+    margin-top: 35px;
+    /* padding-bottom: 35px; */
+    /* border-bottom: 1px solid rgb(232, 229, 229); */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 25px
+}
+
+
+/** checkin selectors **/
+.checkin-main-container {
+    /* border: 2px solid blue; */
+    display: flex;
+    width: 302px;
+    justify-content: space-between;
+}
+
+.door-icon-box {
+    /* border: 2px solid green; */
+    display: flex;
+}
+
+.checkin-text-container {
+    /* border: 1px solid orange */
+    display: flex;
+    flex-direction: column;
+    gap: 3px
+}
+
+.checkin-title-box {
+    /* border: 2px solid green */
+}
+
+.checkin-text-box {
+    /* border: 2px solid purple */
+}
+
+
+/** superhost selectors **/
+.superhost-main-container {
+    /* border: 2px solid blue; */
+    display: flex;
+    width: 650px;
+    justify-content: space-between;
+    gap: 22px
+}
+
+.award-icon-box {
+    /* border: 2px solid green; */
+}
+
+.superhost-text-container {
+    /* border: 1px solid orange; */
+    display: flex;
+    flex-direction: column;
+    gap: 3px
+}
+
+.superhost-title-box {
+    /* border: 2px solid green; */
+
+}
+
+.superhost-text-box {
+    /* border: 2px solid purple; */
+}
+
+/** calendar selectors **/
+.calendar-main-container {
+    /* border: 2px solid blue; */
+    display: flex;
+    flex-direction: row;
+    gap: 27px
+}
+
+.calendar-icon-box {
+    /* border: 2px solid green */
+    position: relative;
+    left: 4px
+}
+
+.calendar-text-box {
+    /* border: 2px solid purple; */
+    display: flex;
+    align-items: center;
+}
+
+.checkin-text-box {
+    color: grey;
+    font-weight: 300;
+}
+
+.superhost-text-box {
+    color: grey;
+    font-weight: 300;
+}
+
+
+
+/** main aircover wrapper **/
+.aircover-wrapper {
+    /* border: 1px solid black; */
+    border-top: 1px solid rgb(232, 229, 229);
+    padding-top: 35px;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    width: 58%;
+    gap: 15px;
+    padding-bottom: 35px;
+    border-bottom: 1px solid rgb(232, 229, 229);
+}
+
+.aircover-image-box {
+    /* border: 1px solid green */
+}
+
+.aircover-text-box {
+    /* border: 1px solid purple */
+}
+
+.aircover-image {
+    height: 26px;
+    width:123px;
+}
+
+
+/** spot description **/
+.spot-description-container {
+    /* border: 1px solid red; */
+    display: flex;
+    margin-top: 25px;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 35px;
+    border-bottom: 1px solid rgb(232, 229, 229);
+    width: 58%
+}
+
+.spot-description-box {
+    /* border: 1px solid green; */
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+    .other-images-container {
+        --num-cols: 2;
+        --row-height: 200px
+    }
+}

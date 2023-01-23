@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { deleteSpotThunk, getSpotDetails } from "../../store/spots";
 import { useSelector } from "react-redux";
+import './Delete.css'
 
 
 export default function DeleteSpot() {
@@ -26,6 +27,6 @@ const handleClick = async (e) => {
     if (!Object.values(spot).length) return null
 
     return (
-        <span onClick={(e) => handleClick(e)} >Delete</span>
+        <span className='delete-button' onClick={(e) => handleClick(e)} >Delete</span>
     )
 }

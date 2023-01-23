@@ -4,9 +4,16 @@ import * as spotsActions from '../../store/spots'
 import './SingleSpotCard.css'
 import { NavLink } from 'react-router-dom';
 import star from '../../images/star.png'
+import { useParams } from 'react-router-dom';
 
 
 export default function SpotCard( { spot }) {
+
+    const {listings} = useParams()
+
+    if (listings) console.log('WORKS')
+
+
     return (
         <>
         <div className='spot-card'>
@@ -19,8 +26,17 @@ export default function SpotCard( { spot }) {
             <div className='spot-title-container' >
                 <span className='spot-title'>{spot.name}</span>
                 <div className='rating-star-container' >
-                    <img src={star} className='star-icon'></img>
-                    <span className='avg-rating'>{spot.avgRating}</span>
+                    {listings ? (
+                        <div className='live-container'>
+                        <i id='live-dot' class="fa-solid fa-circle"></i>
+                        <span className='live-text' >Live</span>
+                        </div>
+                    ): (
+                        <div className='side-container'>
+                        <i class="fa-solid fa-star" id="card-star"></i>
+                        <span className='avg-rating'>{spot.avgRating}</span>
+                        </div>
+                    )}
                 </div>
             </div>
             <div classname='spot-details-container' >

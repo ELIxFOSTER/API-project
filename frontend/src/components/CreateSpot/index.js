@@ -3,7 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 export default function CreateSpot({ user }) {
+  const hostingRoute = 'hosting'
   return (
-    <h3>airStay your home</h3>
+    <>
+    <NavLink to={`/${hostingRoute}/home`}
+    style={{ textDecoration: "none", color: "black" }}
+    >
+      <span>Instabnb your home</span>
+      </NavLink>
+    </>
   );
 }

@@ -4,7 +4,7 @@ export default function ListingsButton() {
 
     return (
         <>
-        <li>Manage Listings</li>
+        <span id='dropdown-listings' >Manage Listings</span>
         </>
     )
 }

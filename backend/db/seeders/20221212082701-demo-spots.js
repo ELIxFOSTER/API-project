@@ -19,7 +19,7 @@ module.exports = {
         lat: 11.05001,
         lng: 22.05001,
         name: 'First Spot',
-        description: "Amazing spot desc. #1",
+        description: "Experience excitement, luxury and relaxation in Ohio's ultimate vacation home! Featuring endless outdoor and indoor activities for all ages, this stunning home truly has it all!",
         price: 111
       },
       {
