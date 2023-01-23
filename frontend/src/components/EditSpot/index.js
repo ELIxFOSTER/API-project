@@ -60,6 +60,7 @@ export default function EditSpot() {
     };
 
     // if (price <= 0) alert('Price must be greater than 0')
+    if (price <=0 ) setErrors(['Price must be greater than 0'])
 
     const newSpot = await dispatch(
       spotsActions.EditSpot(spotData, spotId)
@@ -146,6 +147,7 @@ export default function EditSpot() {
                   return <li key={idx}>{error}</li>;
                 })
               : null}
+
               </ul>
               <button className='edit-submit-button-fixed'>Submit</button>
             </form>
