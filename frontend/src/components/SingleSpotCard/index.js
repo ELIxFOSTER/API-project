@@ -8,11 +8,19 @@ import { useParams } from 'react-router-dom';
 
 
 export default function SpotCard( { spot }) {
+    const [random, setRandom] = useState('')
 
     const {listings} = useParams()
 
     if (listings) console.log('WORKS')
 
+    let milesAway;
+
+    useEffect(() => {
+        setRandom(Math.floor(Math.random()*(999-100+1)+100));
+    }, [])
+
+    console.log('yo',milesAway)
 
     return (
         <>
@@ -24,7 +32,7 @@ export default function SpotCard( { spot }) {
                 <img className='spot-card-img' src={spot.previewImage} ></img>
             </div>
             <div className='spot-title-container' >
-                <span className='spot-title'>{spot.name}</span>
+                <span className='spot-title'>{spot.city}, {spot.state}</span>
                 <div className='rating-star-container' >
                     {listings ? (
                         <div className='live-container'>
@@ -40,7 +48,7 @@ export default function SpotCard( { spot }) {
                 </div>
             </div>
             <div classname='spot-details-container' >
-                <span className='spot-details'>{spot.city}, {spot.state}</span>
+                <span className='spot-details'>{random} miles away</span>
             </div>
             <div className='spot-price-container' >
                 <span className='spot-price'>${spot.price}</span>

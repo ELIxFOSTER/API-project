@@ -1,6 +1,8 @@
 .spot-card {
-    width: 290px;
-    height: 370px;
+    max-width: 290px;
+    min-width: 290px;
+    min-height: 370px;
+    max-height: 370px;
     /* border: 2px solid red; */
     display: flex;
     justify-content: center;
@@ -28,11 +30,12 @@ span {
 }
 
 .spot-title {
-    font-weight: bold;
+    font-weight: 400;
 }
 
 .spot-details {
     color: rgb(150, 142, 142);
+    font-weight: 300;
 }
 
 .spot-title-container {
