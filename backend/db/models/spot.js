@@ -38,7 +38,22 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    price: DataTypes.DECIMAL
+    price: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Price per day is required'
+        },
+        min: {
+          args: [1],
+          msg: 'Price must be greater than 0'
+        },
+        isNumeric: {
+          msg: 'Price needs to be valid'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Spot',
