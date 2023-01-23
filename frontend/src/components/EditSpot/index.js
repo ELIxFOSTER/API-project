@@ -67,7 +67,7 @@ export default function EditSpot() {
     ).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) {
-        setErrors(Object.values(data.errors));
+        setErrors(data.errors);
         console.log("yo this error", errors);
       } else {
       }
