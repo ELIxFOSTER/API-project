@@ -11,13 +11,7 @@ import { useParams } from "react-router-dom";
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const { hosting } = useParams();
-  const {spotId} = useParams()
-
-  const pageHandler = () => {
-    if (hosting) return false
-    if (spotId) return false
-    return true
-  }
+  const { edit } = useParams()
 
   return (
     <div className="navbar-wrapper">
@@ -29,20 +23,32 @@ function Navigation({ isLoaded }) {
             </div>
           </NavLink>
           <div className="navbar-button-container">
-            {!sessionUser || hosting || spotId ? (null) : (
+            {sessionUser && !hosting ? (
+              <div className="navbar-create-button">
+                <CreateSpot user={sessionUser} />
+              </div>
+            ) : !edit ? (
               <div className="navbar-create-button">
               <CreateSpot user={sessionUser} />
             </div>
-            )}
-            {hosting || spotId ? (null) : (
-               <>
-               {isLoaded && (
-                 <div className="navbar-profile-button">
-                   <ProfileButton user={sessionUser} />
-                 </div>
-               )}
-             </>
-            )}
+            ) : (null)}
+            {!hosting ? (
+              <>
+                {isLoaded && (
+                  <div className="navbar-profile-button">
+                    <ProfileButton user={sessionUser} />
+                  </div>
+                )}
+              </>
+            ) : !edit ? (
+              <>
+                {isLoaded && (
+                  <div className="navbar-profile-button">
+                    <ProfileButton user={sessionUser} />
+                  </div>
+                )}
+              </>
+            ) : (null)}
           </div>
         </div>
       </div>
