@@ -23,24 +23,12 @@ function Navigation({ isLoaded }) {
             </div>
           </NavLink>
           <div className="navbar-button-container">
-            {sessionUser && !hosting ? (
+            {sessionUser ? (
               <div className="navbar-create-button">
                 <CreateSpot user={sessionUser} />
               </div>
-            ) : !edit ? (
-              <div className="navbar-create-button">
-              <CreateSpot user={sessionUser} />
-            </div>
             ) : (null)}
             {!hosting ? (
-              <>
-                {isLoaded && (
-                  <div className="navbar-profile-button">
-                    <ProfileButton user={sessionUser} />
-                  </div>
-                )}
-              </>
-            ) : !edit ? (
               <>
                 {isLoaded && (
                   <div className="navbar-profile-button">
