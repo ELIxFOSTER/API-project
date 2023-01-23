@@ -283,9 +283,11 @@
 /** checkin selectors **/
 .checkin-main-container {
     /* border: 2px solid blue; */
+    position: relative;
     display: flex;
     width: 302px;
     justify-content: space-between;
+    right: 4px
 }
 
 .door-icon-box {
@@ -301,7 +303,7 @@
 }
 
 .checkin-title-box {
-    /* border: 2px solid green */
+    /* border: 2px solid green; */
 }
 
 .checkin-text-box {
