@@ -44,7 +44,6 @@ export default function NewSpotForm() {
 
     const previewImage = { url: imageOne, preview: true };
 
-    if (price <= 0) alert('Price must be greater than 0')
 
     let newSpot = await dispatch(spotsActions.CreateNewSpot(spotData)).catch(
       async (res) => {
@@ -172,7 +171,15 @@ export default function NewSpotForm() {
                 placeholder="Description"
                 required
               />
-
+              {errors.length > 0
+              ? errors.map((error, idx) => {
+                  return <li key={idx}>{error}</li>;
+                })
+              : null}
+            {/* {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))} */}
+            {price <= 0 ? (<li>Price must be greater than 0</li>) : (null)}
               <button className='create-submit-button' >Create</button>
             </form>
           </div>
