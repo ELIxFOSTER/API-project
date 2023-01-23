@@ -44,6 +44,8 @@ export default function NewSpotForm() {
 
     const previewImage = { url: imageOne, preview: true };
 
+    if (price <= 0) alert('Price must be greater than 0')
+
     let newSpot = await dispatch(spotsActions.CreateNewSpot(spotData)).catch(
       async (res) => {
         const data = await res.json();
@@ -68,6 +70,10 @@ export default function NewSpotForm() {
       }
       await history.push("/listings");
     }
+
+
+
+
   };
 
   return (
@@ -82,11 +88,6 @@ export default function NewSpotForm() {
           </div>
           <div className='form-box'>
             <form className="create-form" onSubmit={handleSubmit}>
-              {errors.length > 0
-                ? errors.map((error, idx) => {
-                    return <span key={idx}>{error}</span>;
-                  })
-                : null}
               <input
                 type="text"
                 value={name}
@@ -171,6 +172,7 @@ export default function NewSpotForm() {
                 placeholder="Description"
                 required
               />
+
               <button className='create-submit-button' >Create</button>
             </form>
           </div>
@@ -184,15 +186,15 @@ export default function NewSpotForm() {
   //         <form
   //         onSubmit={handleSubmit}
   //         >
-  //             <ul>
-  //             {errors.length > 0 ? (
-  //         errors.map((error, idx) => {
-  //           return (
-  //             <li key={idx}>{error}</li>
-  //           )
-  //         })
-  //       ) : ( null )}
-  //             </ul>
+        //       <ul>
+        //       {errors.length > 0 ? (
+        //   errors.map((error, idx) => {
+        //     return (
+        //       <li key={idx}>{error}</li>
+        //     )
+        //   })
+        // ) : ( null )}
+        //       </ul>
   //             <input
   //                 type='text'
   //                 value={name}

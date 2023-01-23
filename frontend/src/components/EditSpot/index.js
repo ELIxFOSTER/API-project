@@ -59,6 +59,8 @@ export default function EditSpot() {
       price,
     };
 
+    if (price <= 0) alert('Price must be greater than 0')
+
     const newSpot = await dispatch(
       spotsActions.EditSpot(spotData, spotId)
     ).catch(async (res) => {

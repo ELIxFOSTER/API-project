@@ -32,10 +32,10 @@ export default function SpotCard( { spot }) {
                         <span className='live-text' >Live</span>
                         </div>
                     ): (
-                        <>
-                        <img src={star} className='star-icon'></img>
+                        <div className='side-container'>
+                        <i class="fa-solid fa-star" id="card-star"></i>
                         <span className='avg-rating'>{spot.avgRating}</span>
-                        </>
+                        </div>
                     )}
                 </div>
             </div>
