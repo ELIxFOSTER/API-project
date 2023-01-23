@@ -141,7 +141,7 @@ export default function EditSpot() {
                 required
               />
               <ul className='errors-ul'>
-              {errors.length > 0 && hasSubmitted
+              {errors.length > 0
               ? errors.map((error, idx) => {
                   return <li key={idx}>{error}</li>;
                 })
