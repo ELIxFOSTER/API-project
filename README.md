@@ -10,13 +10,13 @@ Visit [Instabnb](https://foster-airstay.onrender.com) to check it out!
 
 # Wiki Links
 
-[API DOCUMENTATION](https://github.com/Dylluu/API-project/wiki/API-Documentation)
+[API DOCUMENTATION](https://github.com/ELIxFOSTER/Instabnb/wiki/API-Documentation)
 
-[DATABASE SCHEMA](https://github.com/Dylluu/API-project/wiki/Database-Schema)
+[DATABASE SCHEMA](https://github.com/ELIxFOSTER/Instabnb/wiki/Database-Schema)
 
-[FEATURE LIST](https://github.com/Dylluu/API-project/wiki/Feature-List)
+[FEATURE LIST](https://github.com/ELIxFOSTER/Instabnb/wiki/Features-List)
 
-[REDUX STORE SHAPE](https://github.com/Dylluu/API-project/wiki/Redux-Store-Shape)
+[REDUX STORE SHAPE](https://github.com/ELIxFOSTER/Instabnb/wiki/Redux-Store)
 
 ## Platforms and Frameworks
 
