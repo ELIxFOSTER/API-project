@@ -53,12 +53,14 @@ function LoginFormModal() {
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
+            placeholder='Username'
           />
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder='Password'
           />
           <ul className='errors-ul'>
             {errors.length > 0 && hasSubmitted
