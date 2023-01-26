@@ -297,7 +297,7 @@ module.exports = {
           spotId: 18,
           url: "https://a0.muscache.com/im/pictures/7a98ac57-354e-478f-9d6e-70c99d131397.jpg?im_w=1200",
           preview: true,
-        // },
+        },
         // {
         //   spotId: 19,
         //   url: "https://a0.muscache.com/im/pictures/1852c1a3-f20f-4c09-b956-af57a36be501.jpg?im_w=1200",
