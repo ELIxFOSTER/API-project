@@ -4,7 +4,7 @@
 
 Instabnb is a clone inspired by [AirBnB](https://www.airbnb.com/). It is a fullstack project utilizing an Express backend, and a React/Redux frontend.
 
-Visit [Instabnb](https://foster-airstay.onrender.com) to check it out!
+Visit [Instabnb](https://foster-instabnb.onrender.com) to check it out!
 
 ***
 
