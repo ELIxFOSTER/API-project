@@ -37,7 +37,7 @@ export default function SpotCard( { spot }) {
                     {listings ? (
                         <div className='live-container'>
                         <i id='live-dot' class="fa-solid fa-circle"></i>
-                        <span className='live-text' >Live</span>
+                        <span className='live-text' >Active</span>
                         </div>
                     ): (
                         <div className='side-container'>
