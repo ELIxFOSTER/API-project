@@ -15,7 +15,7 @@ export default function SpotDetailsCard({ spot, reviews }) {
 
   console.log("yoo", spot);
   let previewImageUrl;
-
+  //
   const imageHandler = () => {
     spot.SpotImages.forEach((image) => {
       console.log("yup", image);

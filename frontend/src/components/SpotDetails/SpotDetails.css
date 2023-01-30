@@ -424,3 +424,20 @@
         --row-height: 200px
     }
 }
+
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .navbar-contents {
+        border: 2px solid red;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navbar-wrapper {
+        height: 125px;
+    }
+}
