@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import * as spotsActions from '../../store/spots'
+import React from 'react'
 import './SingleSpotCard.css'
 import { NavLink } from 'react-router-dom';
-import star from '../../images/star.png'
 import { useParams } from 'react-router-dom';
 
 

@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { getSpotDetails } from "../../store/spots";
-import { NavLink, useParams } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import DeleteSpot from "../DeleteSpot";
 import { useSelector } from "react-redux";
-import selfCheckIn from "../../images/selfCheckIn.png";
 import Reviews from "../ReviewsGetAll";
 import "./SpotDetails.css";
 
