@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { getReviews } from "../../store/reviews";
 import { useSelector } from "react-redux";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import ReviewEditForm from "../ReviewEditForm";
