@@ -22,7 +22,6 @@ export default function EditSpot() {
   const [lng, setLng] = useState(0);
   const [price, setPrice] = useState("");
   const [errors, setErrors] = useState([]);
-  let errorsArr;
 
   useEffect(() => {
     dispatch(spotsActions.getSpotDetails(spotId));
