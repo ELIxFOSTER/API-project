@@ -10,7 +10,6 @@ export default function AllSpots() {
 
     const allSpots = useSelector((state) => state.spots.AllSpots)
     const spots = Object.values(allSpots)
-    console.log('steven', spots)
 
 
     useEffect(() => {
