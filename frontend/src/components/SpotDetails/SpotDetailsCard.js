@@ -13,12 +13,10 @@ export default function SpotDetailsCard({ spot, reviews }) {
 
   const editRoute = 'edit'
 
-  console.log("yoo", spot);
   let previewImageUrl;
   //
   const imageHandler = () => {
     spot.SpotImages.forEach((image) => {
-      console.log("yup", image);
       if (image.preview === true) previewImageUrl = image.url;
     });
   };
@@ -110,32 +108,6 @@ export default function SpotDetailsCard({ spot, reviews }) {
           </div>
         </div>
       </div>
-      {/* <div className="details-wrapper">
-        <div className="details-fit-wrapper">
-          <div className="checkin-details-container">
-            <div className='checkin-box'>
-            <i class="fa-solid fa-door-open" id='door' ></i>
-            <password className='self-checkin' >Self check-in</password>
-            <p className='self-checkin-description'>Check yourself in with the keypad.</p>
-            </div>
-          </div>
-          <div className="superhost-details-container">
-            <div className='superhost-box'>
-            <i class="fa-solid fa-award" id='award'></i>
-            <span>{spot.Owner.firstName} is a Superhost</span>
-            <p>
-              Superhosts are experienced, highly rated hosts who are committed
-              to providing great stays for guests.
-            </p>
-            </div>
-          </div>
-          <div className='cancellation-details-container' >
-            <i class="fa-regular fa-calendar-check" id='calendar' ></i>
-            <span>Free 7 day cancellation</span>
-          </div>
-        </div>
-      </div> */}
-
       <div className='badge-wrapper'>
         <div className='checkin-main-container'>
             <div className='door-icon-box'>
@@ -176,7 +148,6 @@ export default function SpotDetailsCard({ spot, reviews }) {
       </div>
 
       <div className='aircover-wrapper'>
-        {/* <img src={"frontend/src/images/air-cover-real.png"}></img> */}
         <div className='aircover-image-box'>
             <img className='aircover-image' src='https://a0.muscache.com/im/pictures/54e427bb-9cb7-4a81-94cf-78f19156faad.jpg' ></img>
         </div>

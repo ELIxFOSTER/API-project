@@ -58,15 +58,6 @@ function SignupFormModal() {
           </div>
           <div className="signup-form-box">
             <form onSubmit={handleSubmit} className="signup-form">
-              {/* <ul>
-            {errors.firstName ? errors.firstName : null}
-            {errors.lastName ? errors.lastName : null}
-            {errors.username ? errors.username : null}
-            {errors.password ? errors.password : null}
-            {errors.confirmPassword ? errors.confirmPassword : null}
-            {errors.email ? errors.email : null}
-          </ul> */}
-
               <input
                 type="text"
                 value={username}

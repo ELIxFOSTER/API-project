@@ -1,23 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { CreateNewReview, getReviews } from "../../store/reviews";
-import { useParams } from "react-router-dom";
 import { useModal } from "../../context/Modal";
-import { useHistory } from "react-router-dom";
 import { getSpotDetails } from "../../store/spots";
 import "./ReviewCreateForm.css";
 
 export default function ReviewCreateForm({ spot }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-  const history = useHistory();
-  // const spotSelector = useSelector((state) => state.spots.SpotDetails)
-  console.log("x", spot);
+
 
   const [review, setReview] = useState("");
   const [stars, setStars] = useState(0);
   const [errors, setErrors] = useState([]);
-  const [submitted, setSubmitted] = useState(true);
 
   const refresh = async () => {
     await dispatch(getReviews(spot.id));
@@ -39,7 +34,6 @@ export default function ReviewCreateForm({ spot }) {
         if (data && data.errors) {
           setErrors(data.errors);
           console.log("these", errors);
-          setSubmitted(false);
         }
       }
     );

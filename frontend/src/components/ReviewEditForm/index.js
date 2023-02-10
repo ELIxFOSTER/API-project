@@ -14,7 +14,6 @@ export default function ReviewEditForm({ userReview, spotById }) {
     const [errors, setErrors] = useState([])
 
     const refresh = async () => {
-        console.log('ayooo', spotById)
         await dispatch(getSpotDetails(spotById.id))
         await dispatch(getReviews(spotById.id))
     }
