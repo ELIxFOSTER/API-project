@@ -11,7 +11,6 @@ import { useParams } from "react-router-dom";
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const { hosting } = useParams();
-  const { edit } = useParams()
 
   return (
     <div className="navbar-wrapper">

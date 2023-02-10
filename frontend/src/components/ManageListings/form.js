@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import * as spotsActions from "../../store/spots";
 import { useSelector } from "react-redux";
 import "./NewSpotForm.css";
-import detailslogo from '../../images/navlogo.png'
 export default function NewSpotForm() {
   const dispatch = useDispatch();
   let history = useHistory();
@@ -18,7 +17,6 @@ export default function NewSpotForm() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [spotId, setSpotId] = useState("");
-  const [hasSubmit, setHasSubmit] = useState(false);
 
   const [imageOne, setImageOne] = useState("");
   const [imageTwo, setImageTwo] = useState("");

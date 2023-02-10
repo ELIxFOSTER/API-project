@@ -66,9 +66,6 @@ function LoginFormModal() {
                   return <li key={idx}>{error}</li>;
                 })
               : null}
-            {/* {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))} */}
           </ul>
           <button type="submit">Log In</button>
           <button onClick={demoUser}>Demo User</button>
