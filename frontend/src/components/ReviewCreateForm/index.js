@@ -20,7 +20,6 @@ export default function ReviewCreateForm({ spot }) {
   const [submitted, setSubmitted] = useState(true);
 
   const refresh = async () => {
-    // await dispatch(getSpotDetails(spotId))
     await dispatch(getReviews(spot.id));
     await dispatch(getSpotDetails(spot.id));
   };
@@ -90,30 +89,4 @@ export default function ReviewCreateForm({ spot }) {
       </div>
     </div>
   );
-
-  // return (
-  //     <>
-  //         <h1>Create Review</h1>
-  // <form onSubmit={handleSubmit} >
-  //     <ul>
-  //         {errors.review ? errors.review : null}
-  //         {errors.stars ? errors.stars : null}
-  //     </ul>
-  // <label>Review label
-  //     <input
-  //     type='textarea'
-  //     value={review}
-  //     onChange={(e) => setReview(e.target.value)}
-  //     />
-  //     <input
-  //     type='number'
-  //     value={stars}
-  //     onChange={(e) => setStars(e.target.value)}
-  //     />
-  // </label>
-  // <button >Submit</button>
-
-  // </form>
-  //     </>
-  // )
 }

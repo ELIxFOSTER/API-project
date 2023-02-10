@@ -6,7 +6,6 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import ListingsButton from "../ManageListings/ListingButton";
 import { NavLink } from "react-router-dom";
-import { unstable_renderSubtreeIntoContainer } from "react-dom";
 import "./ProfileButton.css";
 
 function ProfileButton({ user }) {
@@ -43,13 +42,13 @@ function ProfileButton({ user }) {
     closeMenu();
   };
 
-  const demoUser = (e) => {
-    e.preventDefault();
-    const password = "password";
-    const credential = "demo@user.io";
-    dispatch(sessionActions.login({ credential, password }));
-    closeMenu();
-  };
+  // const demoUser = (e) => {
+  //   e.preventDefault();
+  //   const password = "password";
+  //   const credential = "demo@user.io";
+  //   dispatch(sessionActions.login({ credential, password }));
+  //   closeMenu();
+  // };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
@@ -82,7 +81,6 @@ function ProfileButton({ user }) {
               <button id='logout-button' onClick={logout}>Log Out</button>
             </span>
           </div>
-            {/* <li>{user.email}</li> */}
           </>
         ) : (
           <div className="popout-menu">
