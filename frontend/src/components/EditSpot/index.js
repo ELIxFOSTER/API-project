@@ -26,23 +26,9 @@ export default function EditSpot() {
 
   useEffect(() => {
     dispatch(spotsActions.getSpotDetails(spotId));
-  }, [dispatch]);
+  }, [dispatch, spotId]);
 
   const spot = useSelector((state) => state.spots);
-  // const spotImages = useSelector((state) => state.spots.spotImages)
-  // console.log('yyoooyo', spot.SpotDetails.SpotImages)
-
-  // console.log('this', spot)
-
-  // useEffect(() => {
-  //     setName(spot.name);
-  //     setCity(spot.city);
-  //     setState(spot.state);
-  //     setCountry(spot.country);
-  //     setAddress(spot.address);
-  //     // setPrice(spot.price);
-  //     setDescription(spot.description);
-  // }, [spot])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -159,66 +145,4 @@ export default function EditSpot() {
       </div>
     </>
   );
-}
-
-{
-  /* <form onSubmit={handleSubmit}>
-          <ul>
-            {errors.length > 0
-              ? errors.map((error, idx) => {
-                  return <li key={idx}>{error}</li>;
-                })
-              : null}
-          </ul>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Name of spot"
-            required
-          />
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="Address"
-            required
-          />
-          <input
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            placeholder="City"
-            requried
-          />
-          <input
-            type="text"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-            placeholder="State"
-            required
-          />
-          <input
-            type="text"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            placeholder="Country"
-            required
-          />
-          <input
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            placeholder="Price per night"
-            required
-          />
-          <textarea
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Description..."
-            required
-          />
-          <button>Submit</button>
-        </form>  */
 }
