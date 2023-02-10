@@ -16,7 +16,7 @@ const spot = useSelector((state) => state.spots.SpotDetails)
 
 useEffect(() => {
     dispatch(getSpotDetails(spotId))
-}, [dispatch])
+}, [dispatch, spotId])
 
 const handleClick = async (e) => {
     e.preventDefault()
