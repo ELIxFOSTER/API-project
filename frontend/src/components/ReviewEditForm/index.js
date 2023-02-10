@@ -1,21 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { EditReview } from "../../store/reviews";
 import { useModal } from "../../context/Modal";
-import { useHistory } from "react-router-dom";
 import { getSpotDetails } from "../../store/spots";
 import { getReviews } from "../../store/reviews";
 
 export default function ReviewEditForm({ userReview, spotById }) {
-    const history = useHistory()
     const dispatch = useDispatch()
     const {closeModal} = useModal()
     const reviewId = userReview.id
     const [review, setReview] = useState('')
     const [stars, setStars] = useState(0)
     const [errors, setErrors] = useState([])
-    const [submitted, setSubmitted] = useState(false)
-    // const spot = useState((state) => state.spots.SpotDetails)
 
     const refresh = async () => {
         console.log('ayooo', spotById)
@@ -46,7 +42,6 @@ export default function ReviewEditForm({ userReview, spotById }) {
         }
     }
 
-    // if (!Object.values(spo).length) return null
 
     return (
         <>
