@@ -8,7 +8,6 @@ import { getSpotDetails } from "../../store/spots";
 export default function DeleteReview({ userReview, spot }) {
     const dispatch = useDispatch()
     const reviewId = userReview.id
-    const [submitted, setSubmitted] = useState(false)
 
     console.log(spot.id)
 
@@ -21,7 +20,6 @@ export default function DeleteReview({ userReview, spot }) {
     const handleClick = async(e) => {
         e.preventDefault()
         await dispatch(deleteReviewThunk(reviewId))
-        setSubmitted(true)
         refresh()
     }
 
