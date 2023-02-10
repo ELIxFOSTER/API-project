@@ -11,7 +11,7 @@ import "./SpotDetails.css";
 export default function SpotDetailsCard({ spot, reviews }) {
   const sessionUser = useSelector((state) => state.session.user);
 
-  const editRoute = 'edit'
+  const editRoute = "edit";
 
   console.log("yoo", spot);
   let previewImageUrl;
@@ -136,63 +136,67 @@ export default function SpotDetailsCard({ spot, reviews }) {
         </div>
       </div> */}
 
-      <div className='badge-wrapper'>
-        <div className='checkin-main-container'>
-            <div className='door-icon-box'>
-            <i class="fa-solid fa-door-open" id='door' ></i>
+      <div className="badge-wrapper">
+        <div className="checkin-main-container">
+          <div className="door-icon-box">
+            <i class="fa-solid fa-door-open" id="door"></i>
+          </div>
+          <div className="checkin-text-container">
+            <div className="checkin-title-box">
+              <span>Self check-in</span>
             </div>
-            <div className='checkin-text-container'>
-                <div className='checkin-title-box'>
-                    <span>Self check-in</span>
-                </div>
-                <div className='checkin-text-box'>
-                    <span>Check yourself in with the lockbox.</span>
-                </div>
+            <div className="checkin-text-box">
+              <span>Check yourself in with the lockbox.</span>
             </div>
+          </div>
         </div>
-        <div className='superhost-main-container'>
-            <div className='award-icon-box'>
-            <i class="fa-regular fa-handshake" id='handshake' ></i>
+        <div className="superhost-main-container">
+          <div className="award-icon-box">
+            <i class="fa-regular fa-handshake" id="handshake"></i>
+          </div>
+          <div className="superhost-text-container">
+            <div className="superhost-title-box">
+              <span>{spot.Owner.firstName} is a Superhost</span>
             </div>
-            <div className='superhost-text-container'>
-                <div className='superhost-title-box'>
-                    <span>{spot.Owner.firstName} is a Superhost</span>
-                </div>
-                <div className='superhost-text-box'>
-                    <span>
-                    Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.
-                    </span>
-                </div>
+            <div className="superhost-text-box">
+              <span>
+                Superhosts are experienced, highly rated hosts who are committed
+                to providing great stays for guests.
+              </span>
             </div>
+          </div>
         </div>
-        <div className='calendar-main-container'>
-            <div className='calendar-icon-box'>
-                <i class="fa-regular fa-calendar-check" id='calendar' ></i>
-            </div>
-            <div className='calendar-text-box'>
-                <span>Free 7 day cancellation</span>
-            </div>
+        <div className="calendar-main-container">
+          <div className="calendar-icon-box">
+            <i class="fa-regular fa-calendar-check" id="calendar"></i>
+          </div>
+          <div className="calendar-text-box">
+            <span>Free 7 day cancellation</span>
+          </div>
         </div>
       </div>
 
-      <div className='aircover-wrapper'>
+      <div className="aircover-wrapper">
         {/* <img src={"frontend/src/images/air-cover-real.png"}></img> */}
-        <div className='aircover-image-box'>
-            <img className='aircover-image' src='https://a0.muscache.com/im/pictures/54e427bb-9cb7-4a81-94cf-78f19156faad.jpg' ></img>
+        <div className="aircover-image-box">
+          <img
+            className="aircover-image"
+            src="https://a0.muscache.com/im/pictures/54e427bb-9cb7-4a81-94cf-78f19156faad.jpg"
+          ></img>
         </div>
-        <div className='aircover-text-box'>
-        <span>
-          Every booking includes free protection from Host cancellations,
-          listing inaccuracies, and other issues like trouble checking in.
-        </span>
-        </div>
-      </div>
-      <div className='spot-description-container'>
-        <div className='spot-description-box'>
-            <span>{spot.description}</span>
+        <div className="aircover-text-box">
+          <span>
+            Every booking includes free protection from Host cancellations,
+            listing inaccuracies, and other issues like trouble checking in.
+          </span>
         </div>
       </div>
-        <Reviews reviews={reviews} spot={spot} />
+      <div className="spot-description-container">
+        <div className="spot-description-box">
+          <span>{spot.description}</span>
+        </div>
+      </div>
+      <Reviews reviews={reviews} spot={spot} />
     </div>
   );
 }
