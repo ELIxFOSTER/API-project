@@ -35,18 +35,6 @@ module.exports = {
         price: 1500
       },
       {
-        ownerId: 3,
-        address: "Spot 3",
-        city: "Bahia Soliman",
-        state: "Quintana Roo",
-        country: "Mexico",
-        lat: 55.50001,
-        lng: 66.00501,
-        name: 'LUXURY VILLA CASA BUENA SUERTE',
-        description: 'Winner of the Top Vacation Rental, Casa Buena Suerte is a stunning Hacienda style villa that overlooks the majestic beach of Soliman Bay.  ',
-        price: 2139
-      },
-      {
         ownerId: 1,
         address: "Spot 4",
         city: "Michelson",
@@ -57,42 +45,6 @@ module.exports = {
         name: 'Luxury CH Villa☼ Beachfront ☼ Kayak ☼ Pool☼ 10 ppl',
         description: "Waterfront Villa at the tropic of cancer beach, Georgetown Exumas. ",
         price: 1250
-      },
-      {
-        ownerId: 1,
-        address: "Spot 5",
-        city: "Quintana Roo",
-        state: "Bahia",
-        country: "Mexico",
-        lat: 99.00501,
-        lng: 11.00101,
-        name: "Sombras Del Viento - Beachfront Villa With Cook",
-        description: "Sombras Del Viento is a wonderful beachfront abode nestled between the turquoise coloured waters of Soliman Bay and the emerald green jungle of the Yucatan",
-        price: 2530
-      },
-      {
-        ownerId: 3,
-        address: "Spot 6",
-        city: "George Town",
-        state: "Exuma",
-        country: "Bahamas",
-        lat: 43.00601,
-        lng: 43.02001,
-        name: "NEW Luxury Villa available for 2023!",
-        description: "This new modern build offers a relaxing atmosphere, perfect for your upcoming vacation.",
-        price: 2650
-      },
-      {
-        ownerId: 3,
-        address: "Spot 7",
-        city: "Balam Canche",
-        state: "Quintata Roo",
-        country: "Mexico",
-        lat: 43.06001,
-        lng: 43.0002251,
-        name: "Luxury Villa with Private Chef Included ! 8 BR Pri",
-        description: "Cenote del Mar is the most luxurious 8 bedroom beachfront villa in all of the Riviera Maya.",
-        price: 4160
       },
       {
         ownerId: 3,
@@ -120,30 +72,6 @@ module.exports = {
       },
       {
         ownerId: 3,
-        address: "Spot 10",
-        city: "Alexander City",
-        state: "Alabama",
-        country: "United States",
-        lat: 43.2001,
-        lng: 43.00021,
-        name: "Lakefront Luxury Villa",
-        description: "Grand and sophisticated villa on peninsula at Lake Martin.",
-        price: 1742
-      },
-      {
-        ownerId: 3,
-        address: "Spot 11",
-        city: "Mexico",
-        state: "MX",
-        country: "US",
-        lat: 43.00601,
-        lng: 43.05001,
-        name: "Eleventh Spot",
-        description: "Last but not least desc. #6",
-        price: 1000
-      },
-      {
-        ownerId: 3,
         address: "Spot 12",
         city: "Mexico",
         state: "MX",
@@ -151,18 +79,6 @@ module.exports = {
         lat: 43.006201,
         lng: 43.5260001,
         name: "Twelfth Spot ",
-        description: "Last but not least desc. #6",
-        price: 1000
-      },
-      {
-        ownerId: 3,
-        address: "Spot 13",
-        city: "Mexico",
-        state: "MX",
-        country: "US",
-        lat: 43.004201,
-        lng: 43.0054201,
-        name: "Thirteenth Spot",
         description: "Last but not least desc. #6",
         price: 1000
       },
